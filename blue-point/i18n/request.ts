@@ -1,5 +1,6 @@
 import {getRequestConfig} from 'next-intl/server';
 import {cookies} from 'next/headers';
+import path from 'path';
 
 export default getRequestConfig(async () => {
   const cookieStore = await cookies();
@@ -8,6 +9,6 @@ export default getRequestConfig(async () => {
 
   return {
     locale,
-    messages: (await import(`../messages/${locale}.json`)).default
+    messages: (await import(path.join(process.cwd(), 'messages', `${locale}.json`))).default
   };
 });
