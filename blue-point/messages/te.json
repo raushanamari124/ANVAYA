@@ -1,0 +1,5 @@
+{
+  "app": { "name": "THE BLUE POINT", "tagline": "డిజిటల్ రిమైండర్ల నుండి నిజ జీవిత సహాయం వరకు" },
+  "nav": { "home": "హోమ్", "medicine": "మందు", "help": "సహాయం", "family": "కుటుంబం" },
+  "topbar": { "language": "భాష", "theme": "థీమ్", "light": "లైట్", "dark": "డార్క్" }
+}
