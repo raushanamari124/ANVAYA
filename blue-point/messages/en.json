@@ -1,0 +1,5 @@
+{
+  "app": { "name": "THE BLUE POINT", "tagline": "From Digital Reminders to Real-World Assistance" },
+  "nav": { "home": "Home", "medicine": "Medicine", "help": "Help", "family": "Family" },
+  "topbar": { "language": "Language", "theme": "Theme", "light": "Light", "dark": "Dark" }
+}
