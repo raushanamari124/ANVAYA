@@ -1,5 +1,19 @@
 {
   "app": { "name": "THE BLUE POINT", "tagline": "From Digital Reminders to Real-World Assistance" },
   "nav": { "home": "Home", "medicine": "Medicine", "help": "Help", "family": "Family" },
-  "topbar": { "language": "Language", "theme": "Theme", "light": "Light", "dark": "Dark" }
+  "topbar": { "language": "Language", "theme": "Theme", "light": "Light", "dark": "Dark" },
+  "register": {
+    "title": "Create an Account",
+    "subtitle": "Join us to coordinate care.",
+    "fullName": "Full Name",
+    "contact": "Phone or Email",
+    "password": "Password",
+    "role": "I am a...",
+    "rolePerson": "Person needing support",
+    "roleFamily": "Family Member",
+    "roleHelper": "Helper / Volunteer",
+    "consent": "I agree to share my data for this platform as per the DPDP Act.",
+    "continue": "Continue",
+    "success": "Registration successful! (Frontend only for now)"
+  }
 }
