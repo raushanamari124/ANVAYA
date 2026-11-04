@@ -10,7 +10,7 @@ export default function Home() {
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         <div className="rounded-xl bg-card border border-border p-5 shadow-sm">Language switch test (Top bar)</div>
         <div className="rounded-xl bg-card border border-border p-5 shadow-sm">Dark/Light mode test (Top bar)</div>
-        <div className="rounded-xl bg-card border border-border p-5 shadow-sm">Vercel Auto-deploy test</div>
+        <div className="rounded-xl bgcard border border-border p-5 shadow-sm">Vercel Auto-deploy test</div>
       </div>
     </section>
   );
