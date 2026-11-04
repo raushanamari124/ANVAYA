@@ -1,5 +1,19 @@
 {
   "app": { "name": "THE BLUE POINT", "tagline": "डिजिटल रिमाइंडर से वास्तविक सहायता तक" },
   "nav": { "home": "होम", "medicine": "दवा", "help": "सहायता", "family": "परिवार" },
-  "topbar": { "language": "भाषा", "theme": "थीम", "light": "लाइट", "dark": "डार्क" }
+  "topbar": { "language": "भाषा", "theme": "थीम", "light": "लाइट", "dark": "डार्क" },
+  "register": {
+    "title": "नया खाता बनाएं",
+    "subtitle": "देखभाल के लिए हमसे जुड़ें।",
+    "fullName": "पूरा नाम",
+    "contact": "फ़ोन या ईमेल",
+    "password": "पासवर्ड",
+    "role": "मैं हूँ...",
+    "rolePerson": "सहायता चाहने वाला व्यक्ति",
+    "roleFamily": "परिवार का सदस्य",
+    "roleHelper": "सहायक / स्वयंसेवक",
+    "consent": "मैं DPDP अधिनियम के तहत अपना डेटा साझा करने के लिए सहमत हूँ।",
+    "continue": "आगे बढ़ें",
+    "success": "पंजीकरण सफल! (अभी केवल फ्रंटएंड)"
+  }
 }
