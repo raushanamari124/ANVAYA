@@ -1,3 +1,20 @@
+{
+  "app": { 
+    "name": "THE BLUE POINT", 
+    "tagline": "From Digital Reminders to Real-World Assistance" 
+  },
+  "nav": { 
+    "home": "Home", 
+    "medicine": "Medicine", 
+    "help": "Help", 
+    "family": "Family" 
+  },
+  "topbar": { 
+    "language": "Language", 
+    "theme": "Theme", 
+    "light": "Light", 
+    "dark": "Dark" 
+  },
   "home": {
     "heroTitle": "Miles Apart,",
     "heroTitleHighlight": "Yet Right by Their Side.",
@@ -55,3 +72,37 @@
     "footerDisclaimer": "This platform is NOT a replacement for emergency services. In case of an emergency, call 112 or 108 immediately.",
     "footerRights": "© 2026 THE BLUE POINT. Built for the community."
   },
+  "dashboard": {
+    "greeting": "Good Morning, Ramesh Ji",
+    "statusCheck": "I am fine today",
+    "statusCheckDesc": "Tap to let your family know you are safe.",
+    "sos": "SOS Emergency",
+    "upcoming": "Upcoming Today",
+    "medReminder": "Medicine Reminder",
+    "medTime": "10:00 AM - Blood Pressure Tablet",
+    "videoCall": "Video Call Reminder",
+    "videoCallDesc": "Scheduled with your Son at 6:00 PM",
+    "joinCall": "Join Call",
+    "orderServices": "Order Services",
+    "grocery": "Grocery Delivery",
+    "groceryDesc": "Fresh vegetables, milk, and daily needs.",
+    "medicine": "Medicine Pickup",
+    "medicineDesc": "Get prescriptions delivered from the pharmacy.",
+    "voiceAssist": "Tap to Speak",
+    "voiceAssistDesc": "Say 'I need help' or 'Order milk'"
+  },
+  "register": {
+    "title": "Create an Account", 
+    "subtitle": "Join us to coordinate care.", 
+    "fullName": "Full Name", 
+    "contact": "Phone or Email", 
+    "password": "Password", 
+    "role": "I am a...", 
+    "rolePerson": "Person needing support", 
+    "roleFamily": "Family Member", 
+    "roleHelper": "Helper / Volunteer", 
+    "consent": "I agree to share my data for this platform as per the DPDP Act.", 
+    "continue": "Continue", 
+    "success": "Registration successful!"
+  }
+}
