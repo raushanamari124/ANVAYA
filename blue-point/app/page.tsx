@@ -7,13 +7,22 @@ export default function Home() {
   const t = useTranslations("home");
   const tApp = useTranslations("app");
 
+  // 9 Features Grid (3x3 Layout)
   const features = [
+    // Row 1: High Impact & Safety
     { icon: "🆘", title: t("featSosTitle"), desc: t("featSosDesc"), color: "border-t-red-500", bg: "bg-red-500/10" },
     { icon: "📋", title: t("featFamilyTitle"), desc: t("featFamilyDesc"), color: "border-t-blue-500", bg: "bg-blue-500/10" },
-    { icon: "🛡️", title: t("featHelpersTitle"), desc: t("featHelpersDesc"), color: "border-t-green-500", bg: "bg-green-500/10" },
+    { icon: "🛵", title: t("featHelpersTitle"), desc: t("featHelpersDesc"), color: "border-t-green-500", bg: "bg-green-500/10" },
+    
+    // Row 2: Daily Needs & Delivery
     { icon: "⏰", title: t("featRemindersTitle"), desc: t("featRemindersDesc"), color: "border-t-orange-500", bg: "bg-orange-500/10" },
-    { icon: "🔒", title: t("featConsentTitle"), desc: t("featConsentDesc"), color: "border-t-purple-500", bg: "bg-purple-500/10" },
+    { icon: "🛒", title: t("featGroceryTitle"), desc: t("featGroceryDesc"), color: "border-t-teal-500", bg: "bg-teal-500/10" },
+    { icon: "🏥", title: t("featMedicineTitle"), desc: t("featMedicineDesc"), color: "border-t-pink-500", bg: "bg-pink-500/10" },
+    
+    // Row 3: Connection & Control
+    { icon: "📹", title: t("featVideoTitle"), desc: t("featVideoDesc"), color: "border-t-indigo-500", bg: "bg-indigo-500/10" },
     { icon: "🎙️", title: t("featVoiceTitle"), desc: t("featVoiceDesc"), color: "border-t-yellow-500", bg: "bg-yellow-500/10" },
+    { icon: "🔒", title: t("featConsentTitle"), desc: t("featConsentDesc"), color: "border-t-purple-500", bg: "bg-purple-500/10" },
   ];
 
   const workflow = [
@@ -24,7 +33,7 @@ export default function Home() {
   ];
 
   const portals = [
-    { id: "person", label: t("parents"), icon: "👴", href: "/dashboard", color: "hover:border-blue-500 hover:bg-blue-500/10" }, // Dashboard link for quick testing
+    { id: "person", label: t("parents"), icon: "👴", href: "/dashboard", color: "hover:border-blue-500 hover:bg-blue-500/10" }, 
     { id: "family", label: t("family"), icon: "👨‍👩‍👧", href: "/register?role=family", color: "hover:border-green-500 hover:bg-green-500/10" },
     { id: "doctor", label: t("doctor"), icon: "🩺", href: "/register?role=doctor", color: "hover:border-purple-500 hover:bg-purple-500/10" },
     { id: "helper", label: t("ngo"), icon: "🤝", href: "/register?role=helper", color: "hover:border-orange-500 hover:bg-orange-500/10" },
@@ -33,7 +42,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen -mt-20 pt-20"> 
       
-      {/* 1. HERO SECTION (Full Width) */}
+      {/* 1. HERO SECTION */}
       <section className="relative w-full h-[85vh] min-h-[600px] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image src="/hero-bg.png" alt="Happy family together" fill className="object-cover object-center" priority />
@@ -83,7 +92,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. FEATURE CARDS */}
+      {/* 3. FEATURE CARDS (9 Cards Grid) */}
       <section id="features" className="w-full bg-card py-24 px-4">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-16">
@@ -130,7 +139,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. FOOTER WITH LOGO */}
+      {/* 5. FOOTER */}
       <footer className="w-full bg-[#020617] text-white py-16 px-4 mt-auto">
         <div className="max-w-[1200px] mx-auto text-center flex flex-col items-center">
           
@@ -142,8 +151,7 @@ export default function Home() {
           <div className="w-full h-px bg-white/10 mb-8 max-w-2xl mx-auto"></div>
           
           <div className="flex flex-col items-center justify-center gap-4 text-white/50">
-            {/* Logo Add Kiya Gaya Hai */}
-            <div className="relative w-16 h-16 mb-2">
+            <div className="relative w-20 h-20 mb-2">
               <Image src="/logo.png" alt="Logo" fill className="object-contain" />
             </div>
             <p className="font-extrabold text-2xl text-white">{tApp("name")}</p>
