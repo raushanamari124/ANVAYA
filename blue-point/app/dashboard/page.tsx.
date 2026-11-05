@@ -1,114 +1,22 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import Link from "next/link";
 
 export default function Dashboard() {
   const t = useTranslations("dashboard");
-  const [isFine, setIsFine] = useState(false);
 
   return (
     <div className="min-h-screen bg-bg pb-24 pt-6 px-4">
       <div className="max-w-4xl mx-auto space-y-6">
+        <h1 className="text-3xl font-bold text-primary">Welcome to Dashboard!</h1>
+        <p className="text-text">Aapka dashboard successfully load ho gaya hai. Ab hum isme design add karenge.</p>
         
-        {/* Header & Greeting */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-card p-6 rounded-2xl border border-border shadow-sm">
-          <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-text">{t("greeting")}</h1>
-            <p className="text-text/60 mt-1">{t("statusCheckDesc")}</p>
-          </div>
-          <button 
-            onClick={() => setIsFine(true)}
-            className={`px-6 h-[56px] rounded-xl font-bold text-lg transition-all flex items-center gap-2 ${isFine ? "bg-success text-white" : "bg-success/10 text-success border border-success/30 hover:bg-success/20"}`}
-          >
-            {isFine ? "✓ Sent to Family" : t("statusCheck")}
-          </button>
+        <div className="bg-card p-6 rounded-2xl border border-border">
+          <h2 className="text-xl font-bold mb-4">{t("greeting")}</h2>
+          <Link href="/" className="text-primary hover:underline font-bold">
+            ← Go back to Home
+          </Link>
         </div>
-
-        {/* SOS Button */}
-        <button className="w-full bg-sos hover:bg-sos/90 text-white rounded-2xl p-6 shadow-lg shadow-sos/20 transition-transform transform active:scale-[0.98] flex flex-col items-center justify-center min-h-[120px]">
-          <span className="text-4xl mb-2">🆘</span>
-          <span className="text-2xl font-extrabold tracking-wide">{t("sos")}</span>
-          <span className="text-sm font-medium opacity-80 mt-1">Call 112 & Alert Family</span>
-        </button>
-
-        {/* Voice Assistant */}
-        <div className="bg-primary/10 border-2 border-primary/30 rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-primary/20 transition-colors">
-          <div className="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-4xl shadow-xl animate-pulse">
-            🎙️
-          </div>
-          <h3 className="text-xl font-bold text-primary mt-4">{t("voiceAssist")}</h3>
-          <p className="text-text/70 text-sm mt-1">{t("voiceAssistDesc")}</p>
-        </div>
-
-        {/* Upcoming Reminders */}
-        <div>
-          <h2 className="text-xl font-bold text-text mb-4">{t("upcoming")}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            
-            <div className="bg-card border border-border rounded-2xl p-5 shadow-sm border-l-4 border-l-orange-500">
-              <div className="flex justify-between items-start">
-                <div className="flex items-center gap-3">
-                  <span className="text-3xl bg-orange-500/10 p-3 rounded-full">💊</span>
-                  <div>
-                    <h3 className="font-bold text-text text-lg">{t("medReminder")}</h3>
-                    <p className="text-text/60 text-sm">{t("medTime")}</p>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-4 flex gap-2">
-                <button className="flex-1 bg-success text-white py-2 rounded-lg font-semibold hover:bg-success/90">Taken</button>
-                <button className="flex-1 bg-bg border border-border text-text py-2 rounded-lg font-semibold hover:bg-border/50">Snooze</button>
-              </div>
-            </div>
-
-            <div className="bg-card border border-border rounded-2xl p-5 shadow-sm border-l-4 border-l-purple-500 flex flex-col justify-between">
-              <div className="flex items-center gap-3">
-                <span className="text-3xl bg-purple-500/10 p-3 rounded-full">📹</span>
-                <div>
-                  <h3 className="font-bold text-text text-lg">{t("videoCall")}</h3>
-                  <p className="text-text/60 text-sm">{t("videoCallDesc")}</p>
-                </div>
-              </div>
-              <button className="mt-4 w-full bg-purple-500 text-white py-3 rounded-lg font-bold hover:bg-purple-600 transition-colors flex items-center justify-center gap-2">
-                {t("joinCall")}
-              </button>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Order Services */}
-        <div>
-          <h2 className="text-xl font-bold text-text mb-4">{t("orderServices")}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            
-            <div className="bg-card border-2 border-border hover:border-blue-500 rounded-2xl p-6 shadow-sm transition-all cursor-pointer group">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-4xl group-hover:scale-110 transition-transform">🛒</span>
-                <span className="bg-blue-500/10 text-blue-500 text-xs font-bold px-3 py-1 rounded-full">Local Delivery</span>
-              </div>
-              <h3 className="text-xl font-bold text-text mb-2">{t("grocery")}</h3>
-              <p className="text-text/60 text-sm mb-4">{t("groceryDesc")}</p>
-              <button className="w-full bg-blue-500 text-white py-3 rounded-xl font-bold hover:bg-blue-600 transition-colors">
-                Order Now
-              </button>
-            </div>
-
-            <div className="bg-card border-2 border-border hover:border-red-500 rounded-2xl p-6 shadow-sm transition-all cursor-pointer group">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-4xl group-hover:scale-110 transition-transform">🏥</span>
-                <span className="bg-red-500/10 text-red-500 text-xs font-bold px-3 py-1 rounded-full">Verified Pharmacy</span>
-              </div>
-              <h3 className="text-xl font-bold text-text mb-2">{t("medicine")}</h3>
-              <p className="text-text/60 text-sm mb-4">{t("medicineDesc")}</p>
-              <button className="w-full bg-red-500 text-white py-3 rounded-xl font-bold hover:bg-red-600 transition-colors">
-                Order Now
-              </button>
-            </div>
-
-          </div>
-        </div>
-
       </div>
     </div>
   );
