@@ -1,6 +1,5 @@
 "use client";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import { useState } from "react";
 
 export default function Dashboard() {
@@ -25,14 +24,14 @@ export default function Dashboard() {
           </button>
         </div>
 
-        {/* SOS Button (Huge & Prominent) */}
+        {/* SOS Button */}
         <button className="w-full bg-sos hover:bg-sos/90 text-white rounded-2xl p-6 shadow-lg shadow-sos/20 transition-transform transform active:scale-[0.98] flex flex-col items-center justify-center min-h-[120px]">
           <span className="text-4xl mb-2">🆘</span>
           <span className="text-2xl font-extrabold tracking-wide">{t("sos")}</span>
           <span className="text-sm font-medium opacity-80 mt-1">Call 112 & Alert Family</span>
         </button>
 
-        {/* Voice Assistant Floating Action (Visual only for now) */}
+        {/* Voice Assistant */}
         <div className="bg-primary/10 border-2 border-primary/30 rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-primary/20 transition-colors">
           <div className="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-4xl shadow-xl animate-pulse">
             🎙️
@@ -41,12 +40,11 @@ export default function Dashboard() {
           <p className="text-text/70 text-sm mt-1">{t("voiceAssistDesc")}</p>
         </div>
 
-        {/* Upcoming Reminders (Video & Medicine) */}
+        {/* Upcoming Reminders */}
         <div>
           <h2 className="text-xl font-bold text-text mb-4">{t("upcoming")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             
-            {/* Medicine Reminder Card */}
             <div className="bg-card border border-border rounded-2xl p-5 shadow-sm border-l-4 border-l-orange-500">
               <div className="flex justify-between items-start">
                 <div className="flex items-center gap-3">
@@ -63,7 +61,6 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Video Call Reminder Card */}
             <div className="bg-card border border-border rounded-2xl p-5 shadow-sm border-l-4 border-l-purple-500 flex flex-col justify-between">
               <div className="flex items-center gap-3">
                 <span className="text-3xl bg-purple-500/10 p-3 rounded-full">📹</span>
@@ -80,12 +77,11 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Order Services (Grocery / Medicine) */}
+        {/* Order Services */}
         <div>
           <h2 className="text-xl font-bold text-text mb-4">{t("orderServices")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             
-            {/* Grocery Card */}
             <div className="bg-card border-2 border-border hover:border-blue-500 rounded-2xl p-6 shadow-sm transition-all cursor-pointer group">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-4xl group-hover:scale-110 transition-transform">🛒</span>
@@ -98,7 +94,6 @@ export default function Dashboard() {
               </button>
             </div>
 
-            {/* Medicine Delivery Card */}
             <div className="bg-card border-2 border-border hover:border-red-500 rounded-2xl p-6 shadow-sm transition-all cursor-pointer group">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-4xl group-hover:scale-110 transition-transform">🏥</span>
