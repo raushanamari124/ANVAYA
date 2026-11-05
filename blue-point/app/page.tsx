@@ -1,6 +1,7 @@
 "use client";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   const t = useTranslations("home");
@@ -23,26 +24,40 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
-      
-      {/* 1. HERO SECTION (Gradient Background) */}
-      <section className="relative w-full bg-gradient-to-br from-primary/10 via-bg to-bg dark:from-primary/20 py-24 flex flex-col items-center text-center px-4 border-b border-border">
-        <div className="max-w-4xl mx-auto">
-          <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary font-semibold mb-6 border border-primary/20 text-sm">
+    <div className="flex flex-col min-h-screen -mt-16 pt-16"> 
+      {/* 1. HERO SECTION WITH BACKGROUND IMAGE */}
+      <section className="relative w-full h-[85vh] min-h-[600px] flex flex-col items-center justify-center text-center px-4 overflow-hidden border-b border-border">
+        
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/hero-bg.jpeg"  // <--- Yahan .jpeg kar diya hai
+            alt="Happy family together" 
+            fill 
+            className="object-cover object-center"
+            priority
+          />
+          {/* Dark Overlay for text readability */}
+          <div className="absolute inset-0 bg-black/60 dark:bg-black/70"></div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-4xl mx-auto mt-10">
+          <span className="inline-block py-1 px-4 rounded-full bg-white/20 backdrop-blur-md text-white font-semibold mb-6 border border-white/30 text-sm shadow-sm">
             Welcome to {tApp("name")}
           </span>
-          <h1 className="text-[40px] md:text-[64px] font-extrabold leading-tight text-text mb-6 tracking-tight">
+          <h1 className="text-[40px] md:text-[64px] font-extrabold leading-tight text-white mb-6 tracking-tight drop-shadow-lg">
             {t("heroTitle")} <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">{t("heroTitleHighlight")}</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">{t("heroTitleHighlight")}</span>
           </h1>
-          <p className="text-lg md:text-2xl text-text/70 mb-10 max-w-2xl mx-auto font-medium">
+          <p className="text-lg md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto font-medium drop-shadow-md">
             {t("heroSubtitle")}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="#roles" className="w-full sm:w-auto px-10 h-[56px] flex items-center justify-center bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary-hover shadow-lg hover:shadow-primary/30 transition-all transform hover:-translate-y-1">
+            <Link href="#roles" className="w-full sm:w-auto px-10 h-[56px] flex items-center justify-center bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary-hover shadow-lg hover:shadow-primary/50 transition-all transform hover:-translate-y-1">
               {t("btnGetStarted")}
             </Link>
-            <Link href="#features" className="w-full sm:w-auto px-10 h-[56px] flex items-center justify-center bg-card border-2 border-border text-text font-bold text-lg rounded-xl hover:border-primary hover:text-primary transition-all">
+            <Link href="#features" className="w-full sm:w-auto px-10 h-[56px] flex items-center justify-center bg-white/10 backdrop-blur-md border-2 border-white/30 text-white font-bold text-lg rounded-xl hover:bg-white/20 transition-all">
               {t("btnLearnMore")}
             </Link>
           </div>
@@ -50,7 +65,7 @@ export default function Home() {
       </section>
 
       {/* 2. FEATURES SECTION */}
-      <section id="features" className="w-full max-w-[1200px] mx-auto py-24 px-4">
+      <section id="features" className="w-full max-w-[1200px] mx-auto py-24 px-4 bg-bg">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-extrabold text-text mb-4 tracking-tight">{t("featuresTitle")}</h2>
           <p className="text-lg text-text/60 max-w-2xl mx-auto">{t("featuresSubtitle")}</p>
