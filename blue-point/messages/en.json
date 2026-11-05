@@ -65,9 +65,13 @@
     "rolesTitle": "Select Your Portal",
     "rolesSubtitle": "Choose how you want to connect with the platform.",
     "parents": "Parents / Person",
+    "parentsDesc": "Manage daily routines, health, and emergency SOS.",
     "family": "Family Member",
+    "familyDesc": "Coordinate care, track status, and assign tasks.",
     "doctor": "Doctor",
+    "doctorDesc": "Manage patient care and review health records.",
     "ngo": "NGO / Helper",
+    "ngoDesc": "View local requests, accept tasks, and assist.",
     
     "footerDisclaimer": "This platform is NOT a replacement for emergency services. In case of an emergency, call 112 or 108 immediately.",
     "footerRights": "© 2026 THE BLUE POINT. Built for the community."
