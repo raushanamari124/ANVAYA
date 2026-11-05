@@ -43,29 +43,28 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen -mt-20 pt-20"> 
       
-            {/* 1. HERO SECTION */}
+                 {/* 1. HERO SECTION */}
       <section className="relative w-full h-[85vh] min-h-[600px] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
         <div className="absolute inset-0 z-0">
+          {/* Photo apni full brightness aur quality mein rahegi */}
           <Image src="/hero-bg.png" alt="Happy family together" fill className="object-cover object-center" priority />
           
-          {/* 1. Dark Overlay (Thoda dark kiya taaki text clear dikhe) */}
-          <div className="absolute inset-0 bg-black/60 dark:bg-black/70"></div>
+          {/* Sirf ek halka sa gradient taaki text ke peeche ka area thoda dark ho, par photo kharab na lage */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-black/50 via-black/20 to-transparent"></div>
           
-          {/* 2. Radial Gradient (Ye center mein text ko aur highlight karega) */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-black/10 via-black/40 to-black/80"></div>
-          
-          {/* 3. Bottom Gradient (Niche wale section se blend karne ke liye) */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg to-transparent"></div>
+          {/* Niche wale section se blend karne ke liye (Optional) */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-bg to-transparent"></div>
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto mt-10">
-          <h1 className="text-[40px] md:text-[64px] font-extrabold leading-tight text-white mb-6 tracking-tight drop-shadow-2xl">
+          {/* H1 Text with Strong Shadow (Photo par clear dikhne ke liye) */}
+          <h1 className="text-[40px] md:text-[64px] font-extrabold leading-tight text-white mb-6 tracking-tight [text-shadow:0_4px_16px_rgba(0,0,0,0.9)]">
             {t("heroTitle")} <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">{t("heroTitleHighlight")}</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400 drop-shadow-2xl">{t("heroTitleHighlight")}</span>
           </h1>
           
-          {/* Text ko bright white aur shadow diya hai padhne ke liye */}
-          <p className="text-lg md:text-2xl text-white mb-10 max-w-2xl mx-auto font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+          {/* Subtitle Text with Shadow */}
+          <p className="text-lg md:text-2xl text-white mb-10 max-w-2xl mx-auto font-medium [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
             {t("heroSubtitle")}
           </p>
           
@@ -78,8 +77,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
-      {/* 2. REQUEST-TO-RESOLUTION WORKFLOW */}
+      </section>      {/* 2. REQUEST-TO-RESOLUTION WORKFLOW */}
       <section className="w-full bg-bg dark:bg-[#0F172A] py-20 px-4 border-b border-border">
         <div className="max-w-[1200px] mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-text mb-4">{t("workflowTitle")}</h2>
