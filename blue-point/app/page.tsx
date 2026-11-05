@@ -17,28 +17,32 @@ export default function Home() {
   ];
 
   const portals = [
-    { id: "person", label: t("parents"), icon: "👴", href: "/register?role=person", color: "hover:border-blue-500 hover:bg-blue-500/5" },
-    { id: "family", label: t("family"), icon: "👨‍👩‍👧", href: "/register?role=family", color: "hover:border-green-500 hover:bg-green-500/5" },
-    { id: "doctor", label: t("doctor"), icon: "🩺", href: "/register?role=doctor", color: "hover:border-purple-500 hover:bg-purple-500/5" },
-    { id: "helper", label: t("ngo"), icon: "🤝", href: "/register?role=helper", color: "hover:border-orange-500 hover:bg-orange-500/5" },
+    { id: "person", label: t("parents"), icon: "👴", href: "/register?role=person", color: "hover:border-blue-500 hover:bg-blue-500/10" },
+    { id: "family", label: t("family"), icon: "👨‍👩‍👧", href: "/register?role=family", color: "hover:border-green-500 hover:bg-green-500/10" },
+    { id: "doctor", label: t("doctor"), icon: "🩺", href: "/register?role=doctor", color: "hover:border-purple-500 hover:bg-purple-500/10" },
+    { id: "helper", label: t("ngo"), icon: "🤝", href: "/register?role=helper", color: "hover:border-orange-500 hover:bg-orange-500/10" },
   ];
 
   return (
     <div className="flex flex-col min-h-screen -mt-16 pt-16"> 
-      {/* 1. HERO SECTION WITH BACKGROUND IMAGE */}
-      <section className="relative w-full h-[85vh] min-h-[600px] flex flex-col items-center justify-center text-center px-4 overflow-hidden border-b border-border">
+      
+      {/* 1. HERO SECTION (Brighter Image & Gradient Blend) */}
+      <section className="relative w-full h-[85vh] min-h-[600px] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
         
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/hero-bg.png" // <--- Yahan .png kar diya hai
+            src="/hero-bg.png" 
             alt="Happy family together" 
             fill 
             className="object-cover object-center"
             priority
           />
-          {/* Dark Overlay for text readability */}
-          <div className="absolute inset-0 bg-black/60 dark:bg-black/70"></div>
+          {/* Overlay: Thoda light kiya gaya hai (black/40) taaki photo clear dikhe */}
+          <div className="absolute inset-0 bg-black/40 dark:bg-black/50"></div>
+          
+          {/* Niche ka gradient taaki section blend ho jaye */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg to-transparent"></div>
         </div>
 
         {/* Hero Content */}
@@ -46,11 +50,11 @@ export default function Home() {
           <span className="inline-block py-1 px-4 rounded-full bg-white/20 backdrop-blur-md text-white font-semibold mb-6 border border-white/30 text-sm shadow-sm">
             Welcome to {tApp("name")}
           </span>
-          <h1 className="text-[40px] md:text-[64px] font-extrabold leading-tight text-white mb-6 tracking-tight drop-shadow-lg">
+          <h1 className="text-[40px] md:text-[64px] font-extrabold leading-tight text-white mb-6 tracking-tight drop-shadow-2xl">
             {t("heroTitle")} <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">{t("heroTitleHighlight")}</span>
           </h1>
-          <p className="text-lg md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto font-medium drop-shadow-md">
+          <p className="text-lg md:text-2xl text-gray-100 mb-10 max-w-2xl mx-auto font-medium drop-shadow-lg">
             {t("heroSubtitle")}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -64,28 +68,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. FEATURES SECTION */}
-      <section id="features" className="w-full max-w-[1200px] mx-auto py-24 px-4 bg-bg">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-extrabold text-text mb-4 tracking-tight">{t("featuresTitle")}</h2>
-          <p className="text-lg text-text/60 max-w-2xl mx-auto">{t("featuresSubtitle")}</p>
-        </div>
+      {/* 2. FEATURES SECTION (Dark Mode me thoda alag shade) */}
+      <section id="features" className="w-full bg-bg dark:bg-[#0F172A] py-24 px-4 border-b border-border">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-text mb-4 tracking-tight">{t("featuresTitle")}</h2>
+            <p className="text-lg text-text/60 max-w-2xl mx-auto">{t("featuresSubtitle")}</p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feat, idx) => (
-            <div key={idx} className={`bg-card rounded-2xl p-8 border border-border border-t-4 ${feat.color} shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group`}>
-              <div className={`w-16 h-16 rounded-2xl ${feat.bg} flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform`}>
-                {feat.icon}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feat, idx) => (
+              <div key={idx} className={`bg-card rounded-2xl p-8 border border-border border-t-4 ${feat.color} shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group`}>
+                <div className={`w-16 h-16 rounded-2xl ${feat.bg} flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform`}>
+                  {feat.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-text mb-3">{feat.title}</h3>
+                <p className="text-text/70 leading-relaxed text-base">{feat.desc}</p>
               </div>
-              <h3 className="text-2xl font-bold text-text mb-3">{feat.title}</h3>
-              <p className="text-text/70 leading-relaxed text-base">{feat.desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* 3. ROLE SELECTION SECTION */}
-      <section id="roles" className="w-full bg-card border-y border-border py-24 px-4">
+      {/* 3. ROLE SELECTION SECTION (Cards wala background) */}
+      <section id="roles" className="w-full bg-card py-24 px-4">
         <div className="max-w-[1200px] mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-extrabold text-text mb-4 tracking-tight">{t("rolesTitle")}</h2>
           <p className="text-lg text-text/60 mb-16">{t("rolesSubtitle")}</p>
@@ -95,7 +101,7 @@ export default function Home() {
               <Link 
                 key={portal.id} 
                 href={portal.href}
-                className={`group flex flex-col items-center justify-center p-8 bg-bg border-2 border-border rounded-2xl transition-all duration-300 min-h-[220px] shadow-sm hover:shadow-md ${portal.color}`}
+                className={`group flex flex-col items-center justify-center p-8 bg-bg border-2 border-border rounded-2xl transition-all duration-300 min-h-[220px] shadow-sm hover:shadow-xl hover:-translate-y-1 ${portal.color}`}
               >
                 <span className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300 drop-shadow-md">
                   {portal.icon}
@@ -109,8 +115,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. FOOTER */}
-      <footer className="w-full bg-[#0A0F16] dark:bg-black text-white py-16 px-4 mt-auto">
+      {/* 4. FOOTER (Sabse dark section) */}
+      <footer className="w-full bg-[#020617] text-white py-16 px-4 mt-auto">
         <div className="max-w-[1200px] mx-auto text-center flex flex-col items-center">
           <div className="inline-flex items-center gap-3 bg-sos text-white px-8 py-4 rounded-xl font-bold mb-10 shadow-lg shadow-sos/20">
             <span className="text-2xl">⚠️</span>
