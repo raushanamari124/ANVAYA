@@ -6,43 +6,43 @@ export default function Home() {
   const t = useTranslations("home");
   const tApp = useTranslations("app");
 
-  // Features List based on your project brief
   const features = [
-    { icon: "⏰", title: t("featRemindersTitle"), desc: t("featRemindersDesc"), border: "border-t-blue-500" },
-    { icon: "🤝", title: t("featHelpTitle"), desc: t("featHelpDesc"), border: "border-t-orange-500" },
-    { icon: "🆘", title: t("featSosTitle"), desc: t("featSosDesc"), border: "border-t-red-500" },
-    { icon: "📋", title: t("featFamilyTitle"), desc: t("featFamilyDesc"), border: "border-t-green-500" },
-    { icon: "🛡️", title: t("featHelpersTitle"), desc: t("featHelpersDesc"), border: "border-t-purple-500" },
-    { icon: "🔒", title: t("featConsentTitle"), desc: t("featConsentDesc"), border: "border-t-yellow-500" },
+    { icon: "⏰", title: t("featRemindersTitle"), desc: t("featRemindersDesc"), color: "border-t-blue-500", bg: "bg-blue-500/10", text: "text-blue-500" },
+    { icon: "🤝", title: t("featHelpTitle"), desc: t("featHelpDesc"), color: "border-t-orange-500", bg: "bg-orange-500/10", text: "text-orange-500" },
+    { icon: "🆘", title: t("featSosTitle"), desc: t("featSosDesc"), color: "border-t-red-500", bg: "bg-red-500/10", text: "text-red-500" },
+    { icon: "📋", title: t("featFamilyTitle"), desc: t("featFamilyDesc"), color: "border-t-green-500", bg: "bg-green-500/10", text: "text-green-500" },
+    { icon: "🛡️", title: t("featHelpersTitle"), desc: t("featHelpersDesc"), color: "border-t-purple-500", bg: "bg-purple-500/10", text: "text-purple-500" },
+    { icon: "🔒", title: t("featConsentTitle"), desc: t("featConsentDesc"), color: "border-t-yellow-500", bg: "bg-yellow-500/10", text: "text-yellow-500" },
   ];
 
-  // Role boxes from your sketch
   const portals = [
-    { id: "person", label: t("parents"), icon: "👴", href: "/register?role=person" },
-    { id: "family", label: t("family"), icon: "👨‍👩‍👧", href: "/register?role=family" },
-    { id: "doctor", label: t("doctor"), icon: "🩺", href: "/register?role=doctor" },
-    { id: "helper", label: t("ngo"), icon: "🤝", href: "/register?role=helper" },
+    { id: "person", label: t("parents"), icon: "👴", href: "/register?role=person", color: "hover:border-blue-500 hover:bg-blue-500/5" },
+    { id: "family", label: t("family"), icon: "👨‍👩‍👧", href: "/register?role=family", color: "hover:border-green-500 hover:bg-green-500/5" },
+    { id: "doctor", label: t("doctor"), icon: "🩺", href: "/register?role=doctor", color: "hover:border-purple-500 hover:bg-purple-500/5" },
+    { id: "helper", label: t("ngo"), icon: "🤝", href: "/register?role=helper", color: "hover:border-orange-500 hover:bg-orange-500/5" },
   ];
 
   return (
-    <div className="flex flex-col min-h-screen -mt-16 pt-16"> 
-      {/* Note: -mt-16 pt-16 use kiya hai taaki topbar ke niche se full width background shuru ho sake */}
-
-      {/* 1. HERO SECTION */}
-      <section className="relative w-full bg-gradient-to-b from-primary/10 to-transparent dark:from-primary/20 py-20 lg:py-32 flex flex-col items-center text-center px-4">
+    <div className="flex flex-col min-h-screen">
+      
+      {/* 1. HERO SECTION (Gradient Background) */}
+      <section className="relative w-full bg-gradient-to-br from-primary/10 via-bg to-bg dark:from-primary/20 py-24 flex flex-col items-center text-center px-4 border-b border-border">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-[40px] md:text-[60px] font-extrabold leading-tight text-text mb-4">
+          <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary font-semibold mb-6 border border-primary/20 text-sm">
+            Welcome to {tApp("name")}
+          </span>
+          <h1 className="text-[40px] md:text-[64px] font-extrabold leading-tight text-text mb-6 tracking-tight">
             {t("heroTitle")} <br className="hidden md:block" />
-            <span className="text-primary">{t("heroTitleHighlight")}</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">{t("heroTitleHighlight")}</span>
           </h1>
-          <p className="text-lg md:text-2xl text-text/80 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg md:text-2xl text-text/70 mb-10 max-w-2xl mx-auto font-medium">
             {t("heroSubtitle")}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="#roles" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary/90 transition-colors shadow-lg">
+            <Link href="#roles" className="w-full sm:w-auto px-10 h-[56px] flex items-center justify-center bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary-hover shadow-lg hover:shadow-primary/30 transition-all transform hover:-translate-y-1">
               {t("btnGetStarted")}
             </Link>
-            <Link href="#features" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-card border-2 border-border text-text font-bold text-lg rounded-xl hover:border-primary transition-colors">
+            <Link href="#features" className="w-full sm:w-auto px-10 h-[56px] flex items-center justify-center bg-card border-2 border-border text-text font-bold text-lg rounded-xl hover:border-primary hover:text-primary transition-all">
               {t("btnLearnMore")}
             </Link>
           </div>
@@ -50,42 +50,42 @@ export default function Home() {
       </section>
 
       {/* 2. FEATURES SECTION */}
-      <section id="features" className="w-full max-w-[1200px] mx-auto py-20 px-4">
+      <section id="features" className="w-full max-w-[1200px] mx-auto py-24 px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">{t("featuresTitle")}</h2>
-          <p className="text-lg text-text/70">{t("featuresSubtitle")}</p>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-text mb-4 tracking-tight">{t("featuresTitle")}</h2>
+          <p className="text-lg text-text/60 max-w-2xl mx-auto">{t("featuresSubtitle")}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feat, idx) => (
-            <div key={idx} className={`bg-card rounded-2xl p-8 border border-border border-t-4 ${feat.border} shadow-sm hover:shadow-md transition-shadow`}>
-              <div className="w-14 h-14 rounded-full bg-bg flex items-center justify-center text-3xl mb-6">
+            <div key={idx} className={`bg-card rounded-2xl p-8 border border-border border-t-4 ${feat.color} shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group`}>
+              <div className={`w-16 h-16 rounded-2xl ${feat.bg} flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform`}>
                 {feat.icon}
               </div>
-              <h3 className="text-xl font-bold text-text mb-3">{feat.title}</h3>
-              <p className="text-text/70 leading-relaxed">{feat.desc}</p>
+              <h3 className="text-2xl font-bold text-text mb-3">{feat.title}</h3>
+              <p className="text-text/70 leading-relaxed text-base">{feat.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 3. ROLE SELECTION SECTION (Aapka Sketch) */}
-      <section id="roles" className="w-full bg-card border-y border-border py-20 px-4">
+      {/* 3. ROLE SELECTION SECTION */}
+      <section id="roles" className="w-full bg-card border-y border-border py-24 px-4">
         <div className="max-w-[1200px] mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">{t("rolesTitle")}</h2>
-          <p className="text-lg text-text/70 mb-12">{t("rolesSubtitle")}</p>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-text mb-4 tracking-tight">{t("rolesTitle")}</h2>
+          <p className="text-lg text-text/60 mb-16">{t("rolesSubtitle")}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {portals.map((portal) => (
               <Link 
                 key={portal.id} 
                 href={portal.href}
-                className="group flex flex-col items-center justify-center p-8 bg-bg border-2 border-border rounded-2xl hover:border-primary hover:bg-primary/5 transition-all duration-200 min-h-[220px]"
+                className={`group flex flex-col items-center justify-center p-8 bg-bg border-2 border-border rounded-2xl transition-all duration-300 min-h-[220px] shadow-sm hover:shadow-md ${portal.color}`}
               >
-                <span className="text-5xl mb-4 group-hover:scale-110 transition-transform">
+                <span className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300 drop-shadow-md">
                   {portal.icon}
                 </span>
-                <h3 className="text-xl font-bold text-center text-text group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-bold text-center text-text transition-colors">
                   {portal.label}
                 </h3>
               </Link>
@@ -94,15 +94,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. FOOTER / SAFETY DISCLAIMER */}
-      <footer className="w-full bg-text text-bg py-12 px-4 mt-auto">
-        <div className="max-w-[1200px] mx-auto text-center">
-          <div className="inline-block bg-sos text-white px-6 py-3 rounded-xl font-bold mb-8 shadow-lg">
-            ⚠️ {t("footerDisclaimer")}
+      {/* 4. FOOTER */}
+      <footer className="w-full bg-[#0A0F16] dark:bg-black text-white py-16 px-4 mt-auto">
+        <div className="max-w-[1200px] mx-auto text-center flex flex-col items-center">
+          <div className="inline-flex items-center gap-3 bg-sos text-white px-8 py-4 rounded-xl font-bold mb-10 shadow-lg shadow-sos/20">
+            <span className="text-2xl">⚠️</span>
+            <p>{t("footerDisclaimer")}</p>
           </div>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-bg/60">
-            <p className="font-bold text-xl text-bg">{tApp("name")}</p>
-            <p className="hidden md:block">•</p>
+          <div className="w-full h-px bg-white/10 mb-8 max-w-2xl mx-auto"></div>
+          <div className="flex flex-col items-center justify-center gap-2 text-white/50">
+            <p className="font-extrabold text-2xl text-white mb-2">{tApp("name")}</p>
             <p>{t("footerRights")}</p>
           </div>
         </div>
