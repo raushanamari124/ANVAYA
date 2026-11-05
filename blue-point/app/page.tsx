@@ -1,7 +1,7 @@
 "use client";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/image"; // Image import kiya
 
 export default function Home() {
   const t = useTranslations("home");
@@ -31,7 +31,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/hero-bg.jpeg"  // <--- Yahan .jpeg kar diya hai
+            src="/hero-bg.jpg" 
             alt="Happy family together" 
             fill 
             className="object-cover object-center"
