@@ -1,33 +1,57 @@
-{
-  "app": { "name": "THE BLUE POINT", "tagline": "From Digital Reminders to Real-World Assistance" },
-  "nav": { "home": "Home", "medicine": "Medicine", "help": "Help", "family": "Family" },
-  "topbar": { "language": "Language", "theme": "Theme", "light": "Light", "dark": "Dark" },
   "home": {
-    "heroTitle": "Miles Apart,", "heroTitleHighlight": "Yet Right by Their Side.", "heroSubtitle": "Seamlessly coordinate daily well-being...", "trustBadge": "✓ DPDP Privacy Compliant  •  ✓ Verified Local Helpers  •  ✓ 24/7 Safety Tracking", "btnPrimary": "Explore Care Plans", "btnSecondary": "Get Started",
-    "workflowTitle": "How Real-World Assistance Works", "workflowSubtitle": "From Digital Reminders to Real-World Assistance.", "step1Title": "1. Request", "step1Desc": "Person asks for help via Simple UI or Voice.", "step2Title": "2. Routing", "step2Desc": "Request is routed to Family or Verified Local Helpers.", "step3Title": "3. Acceptance", "step3Desc": "Helper accepts and status updates in real-time.", "step4Title": "4. Completion", "step4Desc": "Arrival and completion are confirmed and logged.",
-    "featuresTitle": "Accountable Safety & Support", "featuresSubtitle": "Designed for high-impact care and daily engagement.", "featSosTitle": "Closed-Loop SOS Safety", "featSosDesc": "Immediate alert routing with acknowledgement tracking...", "featFamilyTitle": "Family Dashboard & Task Sharing", "featFamilyDesc": "Shared care calendar, task assignment...", "featHelpersTitle": "Verified Local Helpers Network", "featHelpersDesc": "Physical assistance for groceries, transport...", "featRemindersTitle": "Smart Reminders & Routine Tracking", "featRemindersDesc": "Medicine, meals, hydration, and daily 'I am fine' check-in confirmations.", "featConsentTitle": "Consent & Privacy Control", "featConsentDesc": "Granular sharing permissions...", "featVoiceTitle": "Voice Assistant & Multi-Language UI", "featVoiceDesc": "Natural-language voice interaction...",
-    "trustTitle": "Trust & Safety Standards", "trustDesc1": "AI & Automation facilitate routing...", "trustDesc2": "Direct access to local emergency services...",
-    "rolesTitle": "Select Your Portal", "rolesSubtitle": "Choose how you want to connect with the platform.", "parents": "Parents / Person", "family": "Family Member", "doctor": "Doctor", "ngo": "NGO / Helper",
-    "footerDisclaimer": "This platform is NOT a replacement for emergency services. In case of an emergency, call 112 or 108 immediately.", "footerRights": "© 2026 THE BLUE POINT. Built for the community."
+    "heroTitle": "Miles Apart,",
+    "heroTitleHighlight": "Yet Right by Their Side.",
+    "heroSubtitle": "Seamlessly coordinate daily well-being, healthcare access, and emergency safety for your loved ones back home.",
+    "trustBadge": "✓ DPDP Privacy Compliant  •  ✓ Verified Local Helpers  •  ✓ 24/7 Safety Tracking",
+    "btnPrimary": "Explore Care Plans",
+    "btnSecondary": "Get Started",
+
+    "workflowTitle": "How Real-World Assistance Works",
+    "workflowSubtitle": "From Digital Reminders to Real-World Assistance.",
+    "step1Title": "1. Request",
+    "step1Desc": "Person asks for help via Simple UI or Voice.",
+    "step2Title": "2. Routing",
+    "step2Desc": "Request is routed to Family or Verified Local Helpers.",
+    "step3Title": "3. Acceptance",
+    "step3Desc": "Helper accepts and status updates in real-time.",
+    "step4Title": "4. Completion",
+    "step4Desc": "Arrival and completion are confirmed and logged.",
+
+    "featuresTitle": "Everything Your Family Needs",
+    "featuresSubtitle": "Accountable safety, daily engagement, and real-world assistance.",
+    
+    "featSosTitle": "Closed-Loop SOS Safety",
+    "featSosDesc": "Immediate alert routing with acknowledgement tracking. Never falsely displays 'Help is on the way'.",
+    "featFamilyTitle": "Family Dashboard & Tasks",
+    "featFamilyDesc": "Shared care calendar, task assignment, and completion status so no single member is overburdened.",
+    "featHelpersTitle": "Verified Local Helpers",
+    "featHelpersDesc": "Admin-verified locals for physical assistance, transport, and hospital accompaniment.",
+    
+    "featRemindersTitle": "Smart Reminders & Routine",
+    "featRemindersDesc": "Medicine, meals, hydration, and daily 'I am fine' check-in confirmations.",
+    "featGroceryTitle": "Grocery Delivery",
+    "featGroceryDesc": "Order daily essentials like milk, bread, and vegetables directly to their doorstep.",
+    "featMedicineTitle": "Medicine Delivery",
+    "featMedicineDesc": "Get prescriptions and medicines picked up from verified pharmacies and delivered.",
+    
+    "featVideoTitle": "Video Call Reminders",
+    "featVideoDesc": "Scheduled video call alerts so you never miss a moment to connect with them.",
+    "featVoiceTitle": "Voice & Text Ordering",
+    "featVoiceDesc": "Say or type 'Order milk', and our system coordinates with local helpers automatically.",
+    "featConsentTitle": "Consent & Privacy Control",
+    "featConsentDesc": "Granular sharing permissions aligned with DPDP Act—the user controls who sees their data.",
+
+    "trustTitle": "Trust & Safety Standards",
+    "trustDesc1": "AI & Automation facilitate routing and reminders; they never diagnose or make autonomous emergency decisions.",
+    "trustDesc2": "Direct access to local emergency services is always accessible as a fallback.",
+
+    "rolesTitle": "Select Your Portal",
+    "rolesSubtitle": "Choose how you want to connect with the platform.",
+    "parents": "Parents / Person",
+    "family": "Family Member",
+    "doctor": "Doctor",
+    "ngo": "NGO / Helper",
+    
+    "footerDisclaimer": "This platform is NOT a replacement for emergency services. In case of an emergency, call 112 or 108 immediately.",
+    "footerRights": "© 2026 THE BLUE POINT. Built for the community."
   },
-  "dashboard": {
-    "greeting": "Good Morning, Ramesh Ji",
-    "statusCheck": "I am fine today",
-    "statusCheckDesc": "Tap to let your family know you are safe.",
-    "sos": "SOS Emergency",
-    "upcoming": "Upcoming Today",
-    "medReminder": "Medicine Reminder",
-    "medTime": "10:00 AM - Blood Pressure Tablet",
-    "videoCall": "Video Call Reminder",
-    "videoCallDesc": "Scheduled with your Son at 6:00 PM",
-    "joinCall": "Join Call",
-    "orderServices": "Order Services",
-    "grocery": "Grocery Delivery",
-    "groceryDesc": "Fresh vegetables, milk, and daily needs.",
-    "medicine": "Medicine Pickup",
-    "medicineDesc": "Get prescriptions delivered from the pharmacy.",
-    "voiceAssist": "Tap to Speak",
-    "voiceAssistDesc": "Say 'I need help' or 'Order milk'"
-  },
-  "register": { "title": "Create an Account", "subtitle": "Join us to coordinate care.", "fullName": "Full Name", "contact": "Phone or Email", "password": "Password", "role": "I am a...", "rolePerson": "Person needing support", "roleFamily": "Family Member", "roleHelper": "Helper / Volunteer", "consent": "I agree to share my data for this platform as per the DPDP Act.", "continue": "Continue", "success": "Registration successful!" }
-}
