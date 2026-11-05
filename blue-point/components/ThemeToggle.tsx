@@ -8,7 +8,8 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     const saved = localStorage.getItem("theme") as "light" | "dark" | null;
-    const initial = saved ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const initial =
+      saved ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     setTheme(initial);
     document.documentElement.classList.toggle("dark", initial === "dark");
   }, []);
@@ -24,7 +25,7 @@ export default function ThemeToggle() {
     <button
       onClick={toggle}
       aria-label={t("theme")}
-      className="px-3 h-10 rounded-lg border border-border bg-card text-sm font-semibold"
+      className="px-3 h-10 rounded-lg border border-gray-200 bg-gray-100 text-gray-800 text-sm font-semibold hover:bg-gray-200 transition-colors"
     >
       {theme === "light" ? `🌙 ${t("dark")}` : `☀️ ${t("light")}`}
     </button>
