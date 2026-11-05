@@ -3,14 +3,36 @@
   "nav": { "home": "Home", "medicine": "Medicine", "help": "Help", "family": "Family" },
   "topbar": { "language": "Language", "theme": "Theme", "light": "Light", "dark": "Dark" },
   "home": {
-    "title": "Welcome to THE BLUE POINT",
-    "subtitle": "Please select your portal to continue",
-    "parents": "Parents / Person Login",
-    "family": "Family Member Login",
-    "doctor": "Doctor Login",
-    "ngo": "NGO / Helper Login",
-    "aboutTitle": "Website ke bare me (About Us)",
-    "aboutDesc": "THE BLUE POINT is a free-of-cost, connected family care and assistance platform. We help families coordinate daily well-being, healthcare access, safety, and practical help, especially when family members live in different places. Our goal is 'From Digital Reminders to Real-World Assistance'."
+    "heroTitle": "Care Beyond Distances,",
+    "heroTitleHighlight": "Help in Real-Time.",
+    "heroSubtitle": "Coordinate daily well-being, healthcare access, and emergency safety for your loved ones, no matter where you live.",
+    "btnGetStarted": "Get Started",
+    "btnLearnMore": "Learn More",
+    
+    "featuresTitle": "Everything Your Family Needs",
+    "featuresSubtitle": "A connected platform for safety, health, and community support.",
+    "featRemindersTitle": "Smart Reminders",
+    "featRemindersDesc": "Medicine, meals, and hydration tracking with easy 'I am fine' check-ins.",
+    "featHelpTitle": "Help Requests",
+    "featHelpDesc": "Request groceries, transport, or hospital accompaniment from verified local helpers.",
+    "featSosTitle": "SOS Safety",
+    "featSosDesc": "Instant alerts to family and local responders. Honest live status tracking.",
+    "featFamilyTitle": "Family Dashboard",
+    "featFamilyDesc": "Coordinate tasks, view status, and stay connected securely.",
+    "featHelpersTitle": "Verified Helpers",
+    "featHelpersDesc": "Admin-verified volunteers and local helpers you can trust.",
+    "featConsentTitle": "Consent & Privacy",
+    "featConsentDesc": "Strict data privacy under DPDP Act. You control what you share.",
+
+    "rolesTitle": "Select Your Portal",
+    "rolesSubtitle": "Choose how you want to connect with the platform.",
+    "parents": "Parents / Person",
+    "family": "Family Member",
+    "doctor": "Doctor",
+    "ngo": "NGO / Helper",
+    
+    "footerDisclaimer": "This platform is NOT a replacement for emergency services. In case of an emergency, call 112 or 108 immediately.",
+    "footerRights": "© 2026 THE BLUE POINT. Built for the community."
   },
   "register": {
     "title": "Create an Account", "subtitle": "Join us to coordinate care.", "fullName": "Full Name", "contact": "Phone or Email", "password": "Password", "role": "I am a...", "rolePerson": "Person needing support", "roleFamily": "Family Member", "roleHelper": "Helper / Volunteer", "consent": "I agree to share my data for this platform as per the DPDP Act.", "continue": "Continue", "success": "Registration successful!"
