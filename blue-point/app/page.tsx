@@ -7,7 +7,6 @@ export default function Home() {
   const t = useTranslations("home");
   const tApp = useTranslations("app");
 
-  // Re-ordered by Scalability & Impact
   const features = [
     { icon: "🆘", title: t("featSosTitle"), desc: t("featSosDesc"), color: "border-t-red-500", bg: "bg-red-500/10" },
     { icon: "📋", title: t("featFamilyTitle"), desc: t("featFamilyDesc"), color: "border-t-blue-500", bg: "bg-blue-500/10" },
@@ -25,16 +24,16 @@ export default function Home() {
   ];
 
   const portals = [
-    { id: "person", label: t("parents"), icon: "👴", href: "/register?role=person", color: "hover:border-blue-500 hover:bg-blue-500/10" },
+    { id: "person", label: t("parents"), icon: "👴", href: "/dashboard", color: "hover:border-blue-500 hover:bg-blue-500/10" }, // Dashboard link for quick testing
     { id: "family", label: t("family"), icon: "👨‍👩‍👧", href: "/register?role=family", color: "hover:border-green-500 hover:bg-green-500/10" },
     { id: "doctor", label: t("doctor"), icon: "🩺", href: "/register?role=doctor", color: "hover:border-purple-500 hover:bg-purple-500/10" },
     { id: "helper", label: t("ngo"), icon: "🤝", href: "/register?role=helper", color: "hover:border-orange-500 hover:bg-orange-500/10" },
   ];
 
   return (
-    <div className="flex flex-col min-h-screen -mt-16 pt-16"> 
+    <div className="flex flex-col min-h-screen -mt-20 pt-20"> 
       
-      {/* 1. HERO SECTION */}
+      {/* 1. HERO SECTION (Full Width) */}
       <section className="relative w-full h-[85vh] min-h-[600px] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image src="/hero-bg.png" alt="Happy family together" fill className="object-cover object-center" priority />
@@ -47,21 +46,14 @@ export default function Home() {
             {t("heroTitle")} <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">{t("heroTitleHighlight")}</span>
           </h1>
-          <p className="text-lg md:text-2xl text-gray-100 mb-6 max-w-2xl mx-auto font-medium drop-shadow-lg">
+          <p className="text-lg md:text-2xl text-gray-100 mb-10 max-w-2xl mx-auto font-medium drop-shadow-lg">
             {t("heroSubtitle")}
           </p>
           
-          {/* Trust Badge */}
-          <div className="inline-block bg-white/10 backdrop-blur-md border border-white/20 rounded-full py-2 px-6 mb-10 text-sm md:text-base text-white font-semibold shadow-lg">
-            {t("trustBadge")}
-          </div>
-
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            {/* EXPLORE FEATURES BUTTON */}
             <Link href="#features" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary-hover shadow-lg hover:shadow-primary/50 transition-all transform hover:-translate-y-1">
               {t("btnPrimary")}
             </Link>
-            {/* GET STARTED BUTTON -> Goes to Dashboard for testing */}
             <Link href="/dashboard" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-white/10 backdrop-blur-md border-2 border-white/30 text-white font-bold text-lg rounded-xl hover:bg-white/20 transition-all">
               {t("btnSecondary")}
             </Link>
@@ -76,7 +68,6 @@ export default function Home() {
           <p className="text-lg text-text/60 mb-16">{t("workflowSubtitle")}</p>
           
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative">
-            {/* Connecting Line (Desktop) */}
             <div className="hidden md:block absolute top-1/2 left-[10%] right-[10%] h-1 bg-border -z-10 -translate-y-1/2"></div>
             
             {workflow.map((item, idx) => (
@@ -114,30 +105,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. TRUST & SAFETY STANDARDS */}
-      <section className="w-full bg-bg dark:bg-[#0F172A] py-16 px-4 border-y border-border">
-        <div className="max-w-[900px] mx-auto bg-card border-2 border-primary/20 rounded-3xl p-8 md:p-12 shadow-xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-20 -mt-20"></div>
-          <div className="relative z-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6 flex items-center gap-3">
-              <span className="text-3xl">🛡️</span> {t("trustTitle")}
-            </h2>
-            <ul className="space-y-4 text-text/80 text-base md:text-lg">
-              <li className="flex items-start gap-3">
-                <span className="text-success mt-1 font-bold">✓</span>
-                <p>{t("trustDesc1")}</p>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-success mt-1 font-bold">✓</span>
-                <p>{t("trustDesc2")}</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. ROLE SELECTION */}
-      <section id="roles" className="w-full bg-card py-24 px-4">
+      {/* 4. ROLE SELECTION */}
+      <section id="roles" className="w-full bg-bg py-24 px-4">
         <div className="max-w-[1200px] mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-extrabold text-text mb-4">{t("rolesTitle")}</h2>
           <p className="text-lg text-text/60 mb-16">{t("rolesSubtitle")}</p>
@@ -147,7 +116,7 @@ export default function Home() {
               <Link 
                 key={portal.id} 
                 href={portal.href}
-                className={`group flex flex-col items-center justify-center p-8 bg-bg border-2 border-border rounded-2xl transition-all duration-300 min-h-[220px] shadow-sm hover:shadow-xl hover:-translate-y-1 ${portal.color}`}
+                className={`group flex flex-col items-center justify-center p-8 bg-card border-2 border-border rounded-2xl transition-all duration-300 min-h-[220px] shadow-sm hover:shadow-xl hover:-translate-y-1 ${portal.color}`}
               >
                 <span className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300 drop-shadow-md">
                   {portal.icon}
@@ -161,16 +130,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. FOOTER */}
+      {/* 5. FOOTER WITH LOGO */}
       <footer className="w-full bg-[#020617] text-white py-16 px-4 mt-auto">
         <div className="max-w-[1200px] mx-auto text-center flex flex-col items-center">
+          
           <div className="inline-flex items-center gap-3 bg-sos text-white px-8 py-4 rounded-xl font-bold mb-10 shadow-lg shadow-sos/20">
             <span className="text-2xl">⚠️</span>
             <p>{t("footerDisclaimer")}</p>
           </div>
+          
           <div className="w-full h-px bg-white/10 mb-8 max-w-2xl mx-auto"></div>
-          <div className="flex flex-col items-center justify-center gap-2 text-white/50">
-            <p className="font-extrabold text-2xl text-white mb-2">{tApp("name")}</p>
+          
+          <div className="flex flex-col items-center justify-center gap-4 text-white/50">
+            {/* Logo Add Kiya Gaya Hai */}
+            <div className="relative w-16 h-16 mb-2">
+              <Image src="/logo.png" alt="Logo" fill className="object-contain" />
+            </div>
+            <p className="font-extrabold text-2xl text-white">{tApp("name")}</p>
             <p>{t("footerRights")}</p>
           </div>
         </div>
