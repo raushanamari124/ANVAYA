@@ -170,9 +170,6 @@ export default function Home() {
             <Link href="#" className="hover:text-white transition-colors">{t("footerPrivacy")}</Link>
             <Link href="#" className="hover:text-white transition-colors">{t("footerTerms")}</Link>
             <Link href="#" className="hover:text-white transition-colors">{t("footerContact")}</Link>
-            <Link href="tel:112" className="text-sos hover:text-red-400 transition-colors flex items-center gap-1">
-              <span>🚨</span> {t("footerEmergency")}
-            </Link>
           </div>
           
           {/* Divider Line */}
