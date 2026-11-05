@@ -12,10 +12,9 @@ const telugu = Noto_Sans_Telugu({ subsets: ["telugu"], variable: "--font-telugu"
 export const metadata: Metadata = {
   title: "THE BLUE POINT",
   description: "From Digital Reminders to Real-World Assistance",
-  icons: {
-    icon: "/logo.png", // Ye line add karein
-  },
+  icons: { icon: "/logo.png" },
 };
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const locale = await getLocale();
   const messages = await getMessages();
@@ -32,7 +31,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <TopBar />
-          <main className="pt-20 pb-10 max-w-[1200px] mx-auto px-4">{children}</main>
+          {/* Full width ke liye main se padding/margin hataya gaya hai */}
+          <main className="pt-20 pb-10">{children}</main>
         </NextIntlClientProvider>
       </body>
     </html>
