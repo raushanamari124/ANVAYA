@@ -32,11 +32,12 @@ export default function Home() {
     { step: t("step4Title"), desc: t("step4Desc"), icon: "🏁" },
   ];
 
+  // Updated Portals with Descriptions and Colored Icons
   const portals = [
-    { id: "person", label: t("parents"), icon: "👴", href: "/dashboard", color: "hover:border-blue-500 hover:bg-blue-500/10" }, 
-    { id: "family", label: t("family"), icon: "👨‍👩‍👧", href: "/register?role=family", color: "hover:border-green-500 hover:bg-green-500/10" },
-    { id: "doctor", label: t("doctor"), icon: "🩺", href: "/register?role=doctor", color: "hover:border-purple-500 hover:bg-purple-500/10" },
-    { id: "helper", label: t("ngo"), icon: "🤝", href: "/register?role=helper", color: "hover:border-orange-500 hover:bg-orange-500/10" },
+    { id: "person", label: t("parents"), desc: t("parentsDesc"), icon: "👴", href: "/dashboard", color: "hover:border-blue-500 hover:bg-blue-500/5", iconBg: "bg-blue-500/10 text-blue-500" }, 
+    { id: "family", label: t("family"), desc: t("familyDesc"), icon: "👨‍👩‍👧", href: "/register?role=family", color: "hover:border-green-500 hover:bg-green-500/5", iconBg: "bg-green-500/10 text-green-500" },
+    { id: "doctor", label: t("doctor"), desc: t("doctorDesc"), icon: "🩺", href: "/register?role=doctor", color: "hover:border-purple-500 hover:bg-purple-500/5", iconBg: "bg-purple-500/10 text-purple-500" },
+    { id: "helper", label: t("ngo"), desc: t("ngoDesc"), icon: "🤝", href: "/register?role=helper", color: "hover:border-orange-500 hover:bg-orange-500/5", iconBg: "bg-orange-500/10 text-orange-500" },
   ];
 
   return (
@@ -114,7 +115,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. ROLE SELECTION */}
+      {/* 4. ROLE SELECTION (PREMIUM CARDS) */}
       <section id="roles" className="w-full bg-bg py-24 px-4">
         <div className="max-w-[1200px] mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-extrabold text-text mb-4">{t("rolesTitle")}</h2>
@@ -125,14 +126,28 @@ export default function Home() {
               <Link 
                 key={portal.id} 
                 href={portal.href}
-                className={`group flex flex-col items-center justify-center p-8 bg-card border-2 border-border rounded-2xl transition-all duration-300 min-h-[220px] shadow-sm hover:shadow-xl hover:-translate-y-1 ${portal.color}`}
+                className={`group flex flex-col items-start p-8 bg-card border-2 border-border rounded-3xl transition-all duration-300 shadow-sm hover:shadow-2xl hover:-translate-y-2 ${portal.color}`}
               >
-                <span className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300 drop-shadow-md">
+                {/* Icon with colored background */}
+                <div className={`w-20 h-20 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform duration-300 ${portal.iconBg}`}>
                   {portal.icon}
-                </span>
-                <h3 className="text-xl font-bold text-center text-text transition-colors">
+                </div>
+                
+                {/* Title */}
+                <h3 className="text-2xl font-bold text-text mb-3 group-hover:text-primary transition-colors text-left">
                   {portal.label}
                 </h3>
+                
+                {/* Description */}
+                <p className="text-text/70 text-sm leading-relaxed text-left mb-6 flex-grow">
+                  {portal.desc}
+                </p>
+
+                {/* Action Link */}
+                <div className="mt-auto pt-4 w-full border-t border-border flex items-center justify-between text-primary font-semibold text-sm group-hover:text-primary-hover">
+                  <span>Enter Portal</span>
+                  <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                </div>
               </Link>
             ))}
           </div>
