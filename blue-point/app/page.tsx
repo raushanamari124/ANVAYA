@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen -mt-20 pt-20"> 
       
-                 {/* 1. HERO SECTION */}
+      {/* 1. HERO SECTION */}
       <section className="relative w-full h-[85vh] min-h-[600px] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
         <div className="absolute inset-0 z-0">
           {/* Photo apni full brightness aur quality mein rahegi */}
@@ -52,7 +52,7 @@ export default function Home() {
           {/* Sirf ek halka sa gradient taaki text ke peeche ka area thoda dark ho, par photo kharab na lage */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-black/50 via-black/20 to-transparent"></div>
           
-          {/* Niche wale section se blend karne ke liye (Optional) */}
+          {/* Niche wale section se blend karne ke liye */}
           <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-bg to-transparent"></div>
         </div>
 
@@ -72,12 +72,14 @@ export default function Home() {
             <Link href="#features" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary-hover shadow-lg hover:shadow-primary/50 transition-all transform hover:-translate-y-1">
               {t("btnPrimary")}
             </Link>
-            <Link href="/dashboard" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-white/10 backdrop-blur-md border-2 border-white/30 text-white font-bold text-lg rounded-xl hover:bg-white/20 transition-all">
+            <Link href="/dashboard" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-black/40 backdrop-blur-md border-2 border-white/40 text-white font-bold text-lg rounded-xl hover:bg-black/60 transition-all shadow-lg">
               {t("btnSecondary")}
             </Link>
           </div>
         </div>
-      </section>      {/* 2. REQUEST-TO-RESOLUTION WORKFLOW */}
+      </section>
+
+      {/* 2. REQUEST-TO-RESOLUTION WORKFLOW */}
       <section className="w-full bg-bg dark:bg-[#0F172A] py-20 px-4 border-b border-border">
         <div className="max-w-[1200px] mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-text mb-4">{t("workflowTitle")}</h2>
@@ -160,12 +162,12 @@ export default function Home() {
         </div>
       </section>
 
-            {/* 5. FOOTER */}
+      {/* 5. FOOTER */}
       <footer className="w-full bg-[#020617] text-white pt-16 pb-8 px-4 mt-auto border-t border-white/10">
         <div className="max-w-[1200px] mx-auto flex flex-col items-center">
           
           {/* Emergency Disclaimer Banner */}
-          <div className="inline-flex items-center gap-3 bg-sos text-white px-6 py-3 rounded-xl font-bold mb-12 shadow-lg shadow-sos/20">
+          <div className="inline-flex items-center gap-3 bg-sos text-white px-6 py-3 rounded-xl font-bold mb-12 shadow-lg shadow-sos/20 text-center">
             <span className="text-2xl">⚠️</span>
             <p className="text-sm md:text-base">{t("footerDisclaimer")}</p>
           </div>
@@ -176,6 +178,9 @@ export default function Home() {
             <Link href="#" className="hover:text-white transition-colors">{t("footerPrivacy")}</Link>
             <Link href="#" className="hover:text-white transition-colors">{t("footerTerms")}</Link>
             <Link href="#" className="hover:text-white transition-colors">{t("footerContact")}</Link>
+            <Link href="tel:112" className="text-sos hover:text-red-400 transition-colors flex items-center gap-1 font-bold">
+              <span>🚨</span> {t("footerEmergency")}
+            </Link>
           </div>
           
           {/* Divider Line */}
