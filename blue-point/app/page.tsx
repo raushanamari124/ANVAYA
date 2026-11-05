@@ -7,7 +7,7 @@ export default function Home() {
   const t = useTranslations("home");
   const tApp = useTranslations("app");
 
-  // Re-ordered by Scalability & Impact (Prompt ke hisaab se)
+  // Re-ordered by Scalability & Impact
   const features = [
     { icon: "🆘", title: t("featSosTitle"), desc: t("featSosDesc"), color: "border-t-red-500", bg: "bg-red-500/10" },
     { icon: "📋", title: t("featFamilyTitle"), desc: t("featFamilyDesc"), color: "border-t-blue-500", bg: "bg-blue-500/10" },
@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen -mt-16 pt-16"> 
       
-      {/* 1. HERO SECTION (New Copy + Trust Badge) */}
+      {/* 1. HERO SECTION */}
       <section className="relative w-full h-[85vh] min-h-[600px] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image src="/hero-bg.png" alt="Happy family together" fill className="object-cover object-center" priority />
@@ -57,10 +57,12 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* EXPLORE FEATURES BUTTON */}
             <Link href="#features" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary-hover shadow-lg hover:shadow-primary/50 transition-all transform hover:-translate-y-1">
               {t("btnPrimary")}
             </Link>
-            <Link href="#roles" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-white/10 backdrop-blur-md border-2 border-white/30 text-white font-bold text-lg rounded-xl hover:bg-white/20 transition-all">
+            {/* GET STARTED BUTTON -> Goes to Dashboard for testing */}
+            <Link href="/dashboard" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-white/10 backdrop-blur-md border-2 border-white/30 text-white font-bold text-lg rounded-xl hover:bg-white/20 transition-all">
               {t("btnSecondary")}
             </Link>
           </div>
@@ -90,7 +92,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. FEATURE CARDS (Re-ordered) */}
+      {/* 3. FEATURE CARDS */}
       <section id="features" className="w-full bg-card py-24 px-4">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-16">
