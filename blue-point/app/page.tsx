@@ -43,36 +43,46 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen -mt-20 pt-20"> 
       
-      {/* 1. HERO SECTION */}
+           {/* 1. HERO SECTION */}
       <section className="relative w-full h-[85vh] min-h-[600px] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+        
+        {/* Background Image - Full Brightness */}
         <div className="absolute inset-0 z-0">
-          {/* Photo apni full brightness aur quality mein rahegi */}
           <Image src="/hero-bg.png" alt="Happy family together" fill className="object-cover object-center" priority />
           
-          {/* Sirf ek halka sa gradient taaki text ke peeche ka area thoda dark ho, par photo kharab na lage */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-black/50 via-black/20 to-transparent"></div>
-          
-          {/* Niche wale section se blend karne ke liye */}
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-bg to-transparent"></div>
+          {/* Trick: Ek dark blurred circle sirf text ke peeche, taaki photo full bright rahe */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-[80%] md:w-[60%] h-[60%] bg-black/50 blur-[100px] rounded-full"></div>
+          </div>
+
+          {/* Niche wale section se blend karne ke liye gradient */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg to-transparent"></div>
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto mt-10">
-          {/* H1 Text with Strong Shadow (Photo par clear dikhne ke liye) */}
-          <h1 className="text-[40px] md:text-[64px] font-extrabold leading-tight text-white mb-6 tracking-tight [text-shadow:0_4px_16px_rgba(0,0,0,0.9)]">
-            {t("heroTitle")} <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400 drop-shadow-2xl">{t("heroTitleHighlight")}</span>
+          
+          {/* H1 Text - White part with strong shadow */}
+          <h1 className="text-[40px] md:text-[64px] font-extrabold leading-tight text-white mb-2 tracking-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.9)]">
+            {t("heroTitle")}
           </h1>
           
-          {/* Subtitle Text with Shadow */}
-          <p className="text-lg md:text-2xl text-white mb-10 max-w-2xl mx-auto font-medium [text-shadow:0_2px_10px_rgba(0,0,0,0.9)]">
+          {/* H1 Text - Gradient part with THICK outline/shadow so it pops */}
+          <h1 className="text-[40px] md:text-[64px] font-extrabold leading-tight mb-8 tracking-tight">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400 drop-shadow-[0_2px_2px_rgba(0,0,0,1)]">
+              {t("heroTitleHighlight")}
+            </span>
+          </h1>
+          
+          {/* Subtitle - Bold white with strong black shadow */}
+          <p className="text-lg md:text-2xl text-white font-bold mb-10 max-w-2xl mx-auto drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
             {t("heroSubtitle")}
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="#features" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary-hover shadow-lg hover:shadow-primary/50 transition-all transform hover:-translate-y-1">
+            <Link href="#features" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary-hover shadow-lg transition-all transform hover:-translate-y-1">
               {t("btnPrimary")}
             </Link>
-            <Link href="/dashboard" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-black/40 backdrop-blur-md border-2 border-white/40 text-white font-bold text-lg rounded-xl hover:bg-black/60 transition-all shadow-lg">
+            <Link href="/dashboard" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-black/40 backdrop-blur-md border-2 border-white/50 text-white font-bold text-lg rounded-xl hover:bg-black/60 transition-all shadow-lg">
               {t("btnSecondary")}
             </Link>
           </div>
@@ -178,9 +188,7 @@ export default function Home() {
             <Link href="#" className="hover:text-white transition-colors">{t("footerPrivacy")}</Link>
             <Link href="#" className="hover:text-white transition-colors">{t("footerTerms")}</Link>
             <Link href="#" className="hover:text-white transition-colors">{t("footerContact")}</Link>
-            <Link href="tel:112" className="text-sos hover:text-red-400 transition-colors flex items-center gap-1 font-bold">
-              <span>🚨</span> {t("footerEmergency")}
-            </Link>
+            
           </div>
           
           {/* Divider Line */}
