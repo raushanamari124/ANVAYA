@@ -7,13 +7,21 @@ export default function Home() {
   const t = useTranslations("home");
   const tApp = useTranslations("app");
 
+  // Re-ordered by Scalability & Impact (Prompt ke hisaab se)
   const features = [
-    { icon: "⏰", title: t("featRemindersTitle"), desc: t("featRemindersDesc"), color: "border-t-blue-500", bg: "bg-blue-500/10", text: "text-blue-500" },
-    { icon: "🤝", title: t("featHelpTitle"), desc: t("featHelpDesc"), color: "border-t-orange-500", bg: "bg-orange-500/10", text: "text-orange-500" },
-    { icon: "🆘", title: t("featSosTitle"), desc: t("featSosDesc"), color: "border-t-red-500", bg: "bg-red-500/10", text: "text-red-500" },
-    { icon: "📋", title: t("featFamilyTitle"), desc: t("featFamilyDesc"), color: "border-t-green-500", bg: "bg-green-500/10", text: "text-green-500" },
-    { icon: "🛡️", title: t("featHelpersTitle"), desc: t("featHelpersDesc"), color: "border-t-purple-500", bg: "bg-purple-500/10", text: "text-purple-500" },
-    { icon: "🔒", title: t("featConsentTitle"), desc: t("featConsentDesc"), color: "border-t-yellow-500", bg: "bg-yellow-500/10", text: "text-yellow-500" },
+    { icon: "🆘", title: t("featSosTitle"), desc: t("featSosDesc"), color: "border-t-red-500", bg: "bg-red-500/10" },
+    { icon: "📋", title: t("featFamilyTitle"), desc: t("featFamilyDesc"), color: "border-t-blue-500", bg: "bg-blue-500/10" },
+    { icon: "🛡️", title: t("featHelpersTitle"), desc: t("featHelpersDesc"), color: "border-t-green-500", bg: "bg-green-500/10" },
+    { icon: "⏰", title: t("featRemindersTitle"), desc: t("featRemindersDesc"), color: "border-t-orange-500", bg: "bg-orange-500/10" },
+    { icon: "🔒", title: t("featConsentTitle"), desc: t("featConsentDesc"), color: "border-t-purple-500", bg: "bg-purple-500/10" },
+    { icon: "🎙️", title: t("featVoiceTitle"), desc: t("featVoiceDesc"), color: "border-t-yellow-500", bg: "bg-yellow-500/10" },
+  ];
+
+  const workflow = [
+    { step: t("step1Title"), desc: t("step1Desc"), icon: "📱" },
+    { step: t("step2Title"), desc: t("step2Desc"), icon: "🔀" },
+    { step: t("step3Title"), desc: t("step3Desc"), icon: "✅" },
+    { step: t("step4Title"), desc: t("step4Desc"), icon: "🏁" },
   ];
 
   const portals = [
@@ -26,74 +34,110 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen -mt-16 pt-16"> 
       
-      {/* 1. HERO SECTION (Brighter Image & Gradient Blend) */}
+      {/* 1. HERO SECTION (New Copy + Trust Badge) */}
       <section className="relative w-full h-[85vh] min-h-[600px] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
-        
-        {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <Image 
-            src="/hero-bg.png" 
-            alt="Happy family together" 
-            fill 
-            className="object-cover object-center"
-            priority
-          />
-          {/* Overlay: Thoda light kiya gaya hai (black/40) taaki photo clear dikhe */}
-          <div className="absolute inset-0 bg-black/40 dark:bg-black/50"></div>
-          
-          {/* Niche ka gradient taaki section blend ho jaye */}
+          <Image src="/hero-bg.png" alt="Happy family together" fill className="object-cover object-center" priority />
+          <div className="absolute inset-0 bg-black/50 dark:bg-black/60"></div>
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg to-transparent"></div>
         </div>
 
-        {/* Hero Content */}
         <div className="relative z-10 max-w-4xl mx-auto mt-10">
-          <span className="inline-block py-1 px-4 rounded-full bg-white/20 backdrop-blur-md text-white font-semibold mb-6 border border-white/30 text-sm shadow-sm">
-            Welcome to {tApp("name")}
-          </span>
           <h1 className="text-[40px] md:text-[64px] font-extrabold leading-tight text-white mb-6 tracking-tight drop-shadow-2xl">
             {t("heroTitle")} <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">{t("heroTitleHighlight")}</span>
           </h1>
-          <p className="text-lg md:text-2xl text-gray-100 mb-10 max-w-2xl mx-auto font-medium drop-shadow-lg">
+          <p className="text-lg md:text-2xl text-gray-100 mb-6 max-w-2xl mx-auto font-medium drop-shadow-lg">
             {t("heroSubtitle")}
           </p>
+          
+          {/* Trust Badge */}
+          <div className="inline-block bg-white/10 backdrop-blur-md border border-white/20 rounded-full py-2 px-6 mb-10 text-sm md:text-base text-white font-semibold shadow-lg">
+            {t("trustBadge")}
+          </div>
+
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="#roles" className="w-full sm:w-auto px-10 h-[56px] flex items-center justify-center bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary-hover shadow-lg hover:shadow-primary/50 transition-all transform hover:-translate-y-1">
-              {t("btnGetStarted")}
+            <Link href="#features" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary-hover shadow-lg hover:shadow-primary/50 transition-all transform hover:-translate-y-1">
+              {t("btnPrimary")}
             </Link>
-            <Link href="#features" className="w-full sm:w-auto px-10 h-[56px] flex items-center justify-center bg-white/10 backdrop-blur-md border-2 border-white/30 text-white font-bold text-lg rounded-xl hover:bg-white/20 transition-all">
-              {t("btnLearnMore")}
+            <Link href="#roles" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-white/10 backdrop-blur-md border-2 border-white/30 text-white font-bold text-lg rounded-xl hover:bg-white/20 transition-all">
+              {t("btnSecondary")}
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 2. FEATURES SECTION (Dark Mode me thoda alag shade) */}
-      <section id="features" className="w-full bg-bg dark:bg-[#0F172A] py-24 px-4 border-b border-border">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-text mb-4 tracking-tight">{t("featuresTitle")}</h2>
-            <p className="text-lg text-text/60 max-w-2xl mx-auto">{t("featuresSubtitle")}</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feat, idx) => (
-              <div key={idx} className={`bg-card rounded-2xl p-8 border border-border border-t-4 ${feat.color} shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group`}>
-                <div className={`w-16 h-16 rounded-2xl ${feat.bg} flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform`}>
-                  {feat.icon}
+      {/* 2. REQUEST-TO-RESOLUTION WORKFLOW */}
+      <section className="w-full bg-bg dark:bg-[#0F172A] py-20 px-4 border-b border-border">
+        <div className="max-w-[1200px] mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-text mb-4">{t("workflowTitle")}</h2>
+          <p className="text-lg text-text/60 mb-16">{t("workflowSubtitle")}</p>
+          
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative">
+            {/* Connecting Line (Desktop) */}
+            <div className="hidden md:block absolute top-1/2 left-[10%] right-[10%] h-1 bg-border -z-10 -translate-y-1/2"></div>
+            
+            {workflow.map((item, idx) => (
+              <div key={idx} className="flex-1 flex flex-col items-center bg-card p-6 rounded-2xl border border-border shadow-sm w-full md:w-auto relative z-10">
+                <div className="w-16 h-16 rounded-full bg-bg border-2 border-primary flex items-center justify-center text-2xl mb-4 shadow-sm">
+                  {item.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-text mb-3">{feat.title}</h3>
-                <p className="text-text/70 leading-relaxed text-base">{feat.desc}</p>
+                <h3 className="text-lg font-bold text-text mb-2">{item.step}</h3>
+                <p className="text-sm text-text/70 text-center">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. ROLE SELECTION SECTION (Cards wala background) */}
+      {/* 3. FEATURE CARDS (Re-ordered) */}
+      <section id="features" className="w-full bg-card py-24 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-text mb-4">{t("featuresTitle")}</h2>
+            <p className="text-lg text-text/60 max-w-2xl mx-auto">{t("featuresSubtitle")}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feat, idx) => (
+              <div key={idx} className={`bg-bg rounded-2xl p-8 border border-border border-t-4 ${feat.color} shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group`}>
+                <div className={`w-16 h-16 rounded-2xl ${feat.bg} flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform`}>
+                  {feat.icon}
+                </div>
+                <h3 className="text-xl font-bold text-text mb-3">{feat.title}</h3>
+                <p className="text-text/70 leading-relaxed text-sm md:text-base">{feat.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. TRUST & SAFETY STANDARDS */}
+      <section className="w-full bg-bg dark:bg-[#0F172A] py-16 px-4 border-y border-border">
+        <div className="max-w-[900px] mx-auto bg-card border-2 border-primary/20 rounded-3xl p-8 md:p-12 shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-20 -mt-20"></div>
+          <div className="relative z-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6 flex items-center gap-3">
+              <span className="text-3xl">🛡️</span> {t("trustTitle")}
+            </h2>
+            <ul className="space-y-4 text-text/80 text-base md:text-lg">
+              <li className="flex items-start gap-3">
+                <span className="text-success mt-1 font-bold">✓</span>
+                <p>{t("trustDesc1")}</p>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-success mt-1 font-bold">✓</span>
+                <p>{t("trustDesc2")}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. ROLE SELECTION */}
       <section id="roles" className="w-full bg-card py-24 px-4">
         <div className="max-w-[1200px] mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-extrabold text-text mb-4 tracking-tight">{t("rolesTitle")}</h2>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-text mb-4">{t("rolesTitle")}</h2>
           <p className="text-lg text-text/60 mb-16">{t("rolesSubtitle")}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -115,7 +159,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. FOOTER (Sabse dark section) */}
+      {/* 6. FOOTER */}
       <footer className="w-full bg-[#020617] text-white py-16 px-4 mt-auto">
         <div className="max-w-[1200px] mx-auto text-center flex flex-col items-center">
           <div className="inline-flex items-center gap-3 bg-sos text-white px-8 py-4 rounded-xl font-bold mb-10 shadow-lg shadow-sos/20">
