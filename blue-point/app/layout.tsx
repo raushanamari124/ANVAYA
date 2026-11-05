@@ -12,8 +12,10 @@ const telugu = Noto_Sans_Telugu({ subsets: ["telugu"], variable: "--font-telugu"
 export const metadata: Metadata = {
   title: "THE BLUE POINT",
   description: "From Digital Reminders to Real-World Assistance",
+  icons: {
+    icon: "/logo.png", // Ye line add karein
+  },
 };
-
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const locale = await getLocale();
   const messages = await getMessages();
