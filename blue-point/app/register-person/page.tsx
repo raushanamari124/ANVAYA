@@ -18,15 +18,6 @@ export default function RegisterPerson() {
   const handleNext = () => setStep((prev) => Math.min(prev + 1, 4));
   const handlePrev = () => setStep((prev) => Math.max(prev - 1, 1));
 
-  const handleIllnessChange = (illness: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      illnesses: prev.illnesses.includes(illness)
-        ? prev.illnesses.filter((i) => i !== illness)
-        : [...prev.illnesses, illness],
-    }));
-  };
-
   // Har step ke liye alag background image
   const bgImages = [
     "/helper-care.png",    // Step 1
@@ -36,10 +27,10 @@ export default function RegisterPerson() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen relative overflow-hidden -mt-20 pt-20">
+    <div className="flex flex-col min-h-screen relative">
       
-      {/* Background Image - Full High Quality */}
-      <div className="absolute inset-0 z-0">
+      {/* Background Image - Fixed taaki scroll karne par bhi photo na hile */}
+      <div className="fixed inset-0 z-0">
         <Image 
           src={bgImages[step - 1]} 
           alt="Background" 
@@ -47,17 +38,19 @@ export default function RegisterPerson() {
           className="object-cover object-center transition-all duration-700" 
           priority
         />
+        {/* Halka sa dark overlay taaki form ke text clear dikhein */}
+        <div className="absolute inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-sm"></div>
       </div>
 
-      {/* Main Form Container */}
-      <div className="relative z-10 flex-grow flex items-center justify-center py-12 px-4">
+      {/* Main Form Container - pt-28 taaki TopBar ke niche se start ho */}
+      <div className="relative z-10 flex-grow flex items-center justify-center py-12 px-4 pt-28 md:pt-32">
         
-        {/* Form Card - Size Bada (max-w-4xl) aur Consistent Height (min-h-[600px]) */}
-        <div className="w-full max-w-4xl min-h-[600px] flex flex-col bg-white/80 dark:bg-[#0B1120]/80 backdrop-blur-2xl border border-white/50 dark:border-white/20 rounded-3xl shadow-2xl overflow-hidden">
+        {/* Form Card - bg-white/60 aur backdrop-blur-md se background image dikhegi */}
+        <div className="w-full max-w-4xl min-h-[600px] flex flex-col bg-white/60 dark:bg-[#0B1120]/70 backdrop-blur-md border border-white/60 dark:border-white/20 rounded-3xl shadow-2xl overflow-hidden">
           
           {/* Top Bar inside form: Home Button & Progress */}
           <div className="relative">
-            <div className="bg-gray-200/50 dark:bg-gray-800/50 h-2 w-full">
+            <div className="bg-gray-200/30 dark:bg-gray-800/50 h-2 w-full">
               <div className="bg-primary h-full transition-all duration-300" style={{ width: `${(step / 4) * 100}%` }}></div>
             </div>
             
@@ -67,10 +60,10 @@ export default function RegisterPerson() {
             </Link>
           </div>
 
-          {/* Form Content - flex-grow taaki space bhar sake */}
+          {/* Form Content */}
           <div className="p-8 md:p-14 pt-16 flex-grow flex flex-col">
-            <h2 className="text-4xl font-extrabold text-text mb-3">Parent Registration</h2>
-            <p className="text-lg text-text/70 mb-10 font-medium">
+            <h2 className="text-4xl font-extrabold text-text mb-3 drop-shadow-sm">Parent Registration</h2>
+            <p className="text-lg text-text/80 mb-10 font-medium">
               Step {step} of 4: {step === 1 ? "Basic Details" : step === 2 ? "Family Connection" : step === 3 ? "Health Profile" : "Privacy & Consent"}
             </p>
 
@@ -80,17 +73,17 @@ export default function RegisterPerson() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-base font-bold mb-2">Full Name</label>
-                    <input type="text" className="w-full h-14 px-5 rounded-xl border border-border bg-white/60 dark:bg-black/40 focus:ring-2 focus:ring-primary outline-none text-lg" placeholder="e.g. Ramesh Kumar" />
+                    <input type="text" className="w-full h-14 px-5 rounded-xl border border-white/50 dark:border-white/20 bg-white/70 dark:bg-black/50 focus:ring-2 focus:ring-primary outline-none text-lg shadow-sm" placeholder="e.g. Ramesh Kumar" />
                   </div>
                   <div>
                     <label className="block text-base font-bold mb-2">Phone Number</label>
-                    <input type="tel" className="w-full h-14 px-5 rounded-xl border border-border bg-white/60 dark:bg-black/40 focus:ring-2 focus:ring-primary outline-none text-lg" placeholder="+91 XXXXX XXXXX" />
+                    <input type="tel" className="w-full h-14 px-5 rounded-xl border border-white/50 dark:border-white/20 bg-white/70 dark:bg-black/50 focus:ring-2 focus:ring-primary outline-none text-lg shadow-sm" placeholder="+91 XXXXX XXXXX" />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-base font-bold mb-2">Age Group</label>
-                    <select className="w-full h-14 px-5 rounded-xl border border-border bg-white/60 dark:bg-black/40 outline-none text-lg">
+                    <select className="w-full h-14 px-5 rounded-xl border border-white/50 dark:border-white/20 bg-white/70 dark:bg-black/50 outline-none text-lg shadow-sm">
                       <option>50-60 Years</option>
                       <option>60-70 Years</option>
                       <option>70+ Years</option>
@@ -98,7 +91,7 @@ export default function RegisterPerson() {
                   </div>
                   <div>
                     <label className="block text-base font-bold mb-2">City Pincode</label>
-                    <input type="text" className="w-full h-14 px-5 rounded-xl border border-border bg-white/60 dark:bg-black/40 outline-none text-lg" placeholder="e.g. 110001" />
+                    <input type="text" className="w-full h-14 px-5 rounded-xl border border-white/50 dark:border-white/20 bg-white/70 dark:bg-black/50 outline-none text-lg shadow-sm" placeholder="e.g. 110001" />
                   </div>
                 </div>
               </div>
@@ -107,25 +100,25 @@ export default function RegisterPerson() {
             {/* STEP 2: Family ID (Mandatory) */}
             {step === 2 && (
               <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <div className="bg-blue-50/90 dark:bg-blue-900/40 border border-blue-200 dark:border-blue-800 p-5 rounded-xl text-base">
+                <div className="bg-blue-50/80 dark:bg-blue-900/40 border border-blue-200/50 dark:border-blue-800 p-5 rounded-xl text-base backdrop-blur-sm">
                   Aapki Family ID generate ho gayi hai. Ise apne bachhon ko bhejein taaki wo aapse link kar sakein.
                 </div>
                 <div>
                   <label className="block text-base font-bold mb-2">Your Family ID</label>
                   <div className="flex gap-3">
-                    <input type="text" value="TBP-84920" readOnly className="w-full h-14 px-5 rounded-xl border border-border bg-white/70 dark:bg-black/60 font-mono font-bold text-xl" />
-                    <button className="px-8 bg-primary text-white rounded-xl font-bold text-lg hover:bg-primary-hover transition-colors">Copy</button>
+                    <input type="text" value="TBP-84920" readOnly className="w-full h-14 px-5 rounded-xl border border-white/50 dark:border-white/20 bg-white/80 dark:bg-black/60 font-mono font-bold text-xl shadow-sm" />
+                    <button className="px-8 bg-primary text-white rounded-xl font-bold text-lg hover:bg-primary-hover transition-colors shadow-md">Copy</button>
                   </div>
                 </div>
                 <hr className="my-6 border-border/50" />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-base font-bold mb-2">Child's Phone / Email (Mandatory)</label>
-                    <input type="text" className="w-full h-14 px-5 rounded-xl border border-border bg-white/60 dark:bg-black/40 outline-none text-lg" placeholder="Child's contact info" />
+                    <input type="text" className="w-full h-14 px-5 rounded-xl border border-white/50 dark:border-white/20 bg-white/70 dark:bg-black/50 outline-none text-lg shadow-sm" placeholder="Child's contact info" />
                   </div>
                   <div>
                     <label className="block text-base font-bold mb-2">Relation</label>
-                    <select className="w-full h-14 px-5 rounded-xl border border-border bg-white/60 dark:bg-black/40 outline-none text-lg">
+                    <select className="w-full h-14 px-5 rounded-xl border border-white/50 dark:border-white/20 bg-white/70 dark:bg-black/50 outline-none text-lg shadow-sm">
                       <option>Son</option>
                       <option>Daughter</option>
                       <option>Relative</option>
@@ -142,7 +135,7 @@ export default function RegisterPerson() {
                   <label className="block text-base font-bold mb-3">Known Illnesses (Select all that apply)</label>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {["Diabetes (Sugar)", "Blood Pressure", "Heart Disease", "Asthma", "Arthritis", "None"].map((ill) => (
-                      <label key={ill} className="flex items-center gap-3 p-4 border border-border rounded-xl cursor-pointer bg-white/50 dark:bg-black/40 hover:bg-white/80 transition-colors">
+                      <label key={ill} className="flex items-center gap-3 p-4 border border-white/50 dark:border-white/20 rounded-xl cursor-pointer bg-white/50 dark:bg-black/40 hover:bg-white/80 transition-colors shadow-sm">
                         <input type="checkbox" className="w-6 h-6 text-primary rounded" />
                         <span className="text-base font-medium">{ill}</span>
                       </label>
@@ -154,8 +147,8 @@ export default function RegisterPerson() {
                   <label className="block text-base font-bold mb-3">Current Medications</label>
                   <div className="space-y-4">
                     <div className="flex flex-col md:flex-row gap-3">
-                      <input type="text" placeholder="Medicine Name" className="flex-1 h-14 px-5 rounded-xl border border-border bg-white/60 dark:bg-black/40 outline-none text-lg" />
-                      <input type="text" placeholder="Dosage" className="w-full md:w-1/3 h-14 px-5 rounded-xl border border-border bg-white/60 dark:bg-black/40 outline-none text-lg" />
+                      <input type="text" placeholder="Medicine Name" className="flex-1 h-14 px-5 rounded-xl border border-white/50 dark:border-white/20 bg-white/70 dark:bg-black/50 outline-none text-lg shadow-sm" />
+                      <input type="text" placeholder="Dosage" className="w-full md:w-1/3 h-14 px-5 rounded-xl border border-white/50 dark:border-white/20 bg-white/70 dark:bg-black/50 outline-none text-lg shadow-sm" />
                     </div>
                     <button className="text-base text-primary font-bold hover:underline">+ Add Another Medicine</button>
                   </div>
@@ -168,20 +161,20 @@ export default function RegisterPerson() {
               <div className="space-y-5 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <p className="text-base font-medium mb-4">Choose what you want to share with your family:</p>
                 
-                <label className="flex items-center justify-between p-5 border border-border rounded-xl cursor-pointer bg-white/50 dark:bg-black/40 hover:bg-white/80 transition-colors">
+                <label className="flex items-center justify-between p-5 border border-white/50 dark:border-white/20 rounded-xl cursor-pointer bg-white/50 dark:bg-black/40 hover:bg-white/80 transition-colors shadow-sm">
                   <span className="text-lg font-medium">Share Medicine Status</span>
                   <input type="checkbox" className="w-7 h-7 rounded-full text-primary focus:ring-primary" />
                 </label>
-                <label className="flex items-center justify-between p-5 border border-border rounded-xl cursor-pointer bg-white/50 dark:bg-black/40 hover:bg-white/80 transition-colors">
+                <label className="flex items-center justify-between p-5 border border-white/50 dark:border-white/20 rounded-xl cursor-pointer bg-white/50 dark:bg-black/40 hover:bg-white/80 transition-colors shadow-sm">
                   <span className="text-lg font-medium">Share Mood / Check-in</span>
                   <input type="checkbox" className="w-7 h-7 rounded-full text-primary focus:ring-primary" />
                 </label>
-                <label className="flex items-center justify-between p-5 border border-border rounded-xl cursor-pointer bg-white/50 dark:bg-black/40 hover:bg-white/80 transition-colors">
+                <label className="flex items-center justify-between p-5 border border-white/50 dark:border-white/20 rounded-xl cursor-pointer bg-white/50 dark:bg-black/40 hover:bg-white/80 transition-colors shadow-sm">
                   <span className="text-lg font-medium">Share Location (during SOS only)</span>
                   <input type="checkbox" defaultChecked className="w-7 h-7 rounded-full text-primary focus:ring-primary" />
                 </label>
 
-                <div className="mt-8 p-5 bg-white/60 dark:bg-black/50 rounded-xl border border-border">
+                <div className="mt-8 p-5 bg-white/60 dark:bg-black/50 rounded-xl border border-white/50 dark:border-white/20 shadow-sm">
                   <label className="flex items-start gap-4 cursor-pointer">
                     <input type="checkbox" required className="w-6 h-6 mt-1 text-primary rounded" />
                     <span className="text-base text-text/90 leading-relaxed">I agree to share my data for care coordination as per the DPDP Act. I can withdraw consent anytime.</span>
@@ -190,10 +183,10 @@ export default function RegisterPerson() {
               </div>
             )}
 
-            {/* Navigation Buttons (mt-auto lagaya hai taaki hamesha niche rahein) */}
-            <div className="flex justify-between mt-auto pt-10 border-t border-border/50">
+            {/* Navigation Buttons */}
+            <div className="flex justify-between mt-auto pt-10 border-t border-white/40 dark:border-white/10 mt-8">
               {step > 1 ? (
-                <button onClick={handlePrev} className="px-8 py-4 rounded-xl font-bold border-2 border-border text-text hover:bg-white/60 dark:hover:bg-black/50 transition-colors text-lg">Back</button>
+                <button onClick={handlePrev} className="px-8 py-4 rounded-xl font-bold border-2 border-border/50 text-text hover:bg-white/50 dark:hover:bg-black/50 transition-colors text-lg">Back</button>
               ) : <div></div>}
               
               {step < 4 ? (
@@ -215,8 +208,10 @@ export default function RegisterPerson() {
         </div>
       </div>
 
-      {/* Footer - Home page jaisa hi */}
-      <Footer />
+      {/* Footer - Ab yeh page ke end me properly dikhega */}
+      <div className="relative z-10 w-full mt-auto">
+        <Footer />
+      </div>
     </div>
   );
 }
