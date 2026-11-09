@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen -mt-20 pt-20"> 
       
-           {/* 1. HERO SECTION */}
+      {/* 1. HERO SECTION */}
       <section className="relative w-full h-[85vh] min-h-[600px] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
         
         {/* Background Image - Full Brightness */}
@@ -82,7 +82,8 @@ export default function Home() {
             <Link href="#features" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary-hover shadow-lg transition-all transform hover:-translate-y-1">
               {t("btnPrimary")}
             </Link>
-            <Link href="/dashboard" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-black/40 backdrop-blur-md border-2 border-white/50 text-white font-bold text-lg rounded-xl hover:bg-black/60 transition-all shadow-lg">
+            {/* Yahan Link fix kiya gaya hai (href="#roles") taaki click karne par portal section par scroll ho */}
+            <Link href="#roles" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-black/40 backdrop-blur-md border-2 border-white/50 text-white font-bold text-lg rounded-xl hover:bg-black/60 transition-all shadow-lg">
               {t("btnSecondary")}
             </Link>
           </div>
@@ -188,7 +189,6 @@ export default function Home() {
             <Link href="#" className="hover:text-white transition-colors">{t("footerPrivacy")}</Link>
             <Link href="#" className="hover:text-white transition-colors">{t("footerTerms")}</Link>
             <Link href="#" className="hover:text-white transition-colors">{t("footerContact")}</Link>
-            
           </div>
           
           {/* Divider Line */}
