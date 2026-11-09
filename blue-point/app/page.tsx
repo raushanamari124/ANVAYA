@@ -1,216 +1,210 @@
 "use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
-import Footer from "@/components/Footer"; // Footer import kiya
+import Image from "next/image";
 
-export default function RegisterPerson() {
-  const router = useRouter();
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    name: "", phone: "", ageGroup: "60-70", pincode: "",
-    familyId: "TBP-84920", childPhone: "", relation: "Son",
-    illnesses: [] as string[], medications: [{ name: "", dosage: "" }],
-    shareMedicine: false, shareMood: false, shareSOS: true,
-  });
+export default function Home() {
+  const t = useTranslations("home");
+  const tApp = useTranslations("app");
 
-  const handleNext = () => setStep((prev) => Math.min(prev + 1, 4));
-  const handlePrev = () => setStep((prev) => Math.max(prev - 1, 1));
+  // 9 Features Grid (3x3 Layout)
+  const features = [
+    // Row 1: High Impact & Safety
+    { icon: "🆘", title: t("featSosTitle"), desc: t("featSosDesc"), color: "border-t-red-500", bg: "bg-red-500/10" },
+    { icon: "📋", title: t("featFamilyTitle"), desc: t("featFamilyDesc"), color: "border-t-blue-500", bg: "bg-blue-500/10" },
+    { icon: "🛵", title: t("featHelpersTitle"), desc: t("featHelpersDesc"), color: "border-t-green-500", bg: "bg-green-500/10" },
+    
+    // Row 2: Daily Needs & Delivery
+    { icon: "⏰", title: t("featRemindersTitle"), desc: t("featRemindersDesc"), color: "border-t-orange-500", bg: "bg-orange-500/10" },
+    { icon: "🛒", title: t("featGroceryTitle"), desc: t("featGroceryDesc"), color: "border-t-teal-500", bg: "bg-teal-500/10" },
+    { icon: "🏥", title: t("featMedicineTitle"), desc: t("featMedicineDesc"), color: "border-t-pink-500", bg: "bg-pink-500/10" },
+    
+    // Row 3: Connection & Control
+    { icon: "📹", title: t("featVideoTitle"), desc: t("featVideoDesc"), color: "border-t-indigo-500", bg: "bg-indigo-500/10" },
+    { icon: "🎙️", title: t("featVoiceTitle"), desc: t("featVoiceDesc"), color: "border-t-yellow-500", bg: "bg-yellow-500/10" },
+    { icon: "🔒", title: t("featConsentTitle"), desc: t("featConsentDesc"), color: "border-t-purple-500", bg: "bg-purple-500/10" },
+  ];
 
-  const handleIllnessChange = (illness: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      illnesses: prev.illnesses.includes(illness)
-        ? prev.illnesses.filter((i) => i !== illness)
-        : [...prev.illnesses, illness],
-    }));
-  };
+  const workflow = [
+    { step: t("step1Title"), desc: t("step1Desc"), icon: "📱" },
+    { step: t("step2Title"), desc: t("step2Desc"), icon: "🔀" },
+    { step: t("step3Title"), desc: t("step3Desc"), icon: "✅" },
+    { step: t("step4Title"), desc: t("step4Desc"), icon: "🏁" },
+  ];
 
-  // Har step ke liye alag background image
-  const bgImages = [
-    "/helper-care.png",    // Step 1
-    "/video-call-bg.png",  // Step 2
-    "/medicine-bg.png",    // Step 3
-    "/meal-bg.png"         // Step 4
+  // Updated Portals with Descriptions and Colored Icons
+  const portals = [
+    { id: "person", label: t("parents"), desc: t("parentsDesc"), icon: "👴", href: "/register-person", color: "hover:border-blue-500 hover:bg-blue-500/5", iconBg: "bg-blue-500/10 text-blue-500" }, 
+    { id: "family", label: t("family"), desc: t("familyDesc"), icon: "👨‍👩‍👧", href: "/register?role=family", color: "hover:border-green-500 hover:bg-green-500/5", iconBg: "bg-green-500/10 text-green-500" },
+    { id: "doctor", label: t("doctor"), desc: t("doctorDesc"), icon: "🩺", href: "/register?role=doctor", color: "hover:border-purple-500 hover:bg-purple-500/5", iconBg: "bg-purple-500/10 text-purple-500" },
+    { id: "helper", label: t("ngo"), desc: t("ngoDesc"), icon: "🤝", href: "/register?role=helper", color: "hover:border-orange-500 hover:bg-orange-500/5", iconBg: "bg-orange-500/10 text-orange-500" },
   ];
 
   return (
-    <div className="flex flex-col min-h-screen relative overflow-hidden -mt-20 pt-20">
+    <div className="flex flex-col min-h-screen -mt-20 pt-20"> 
       
-      {/* Background Image - Full High Quality (No dark overlay, no blur) */}
-      <div className="absolute inset-0 z-0">
-        <Image 
-          src={bgImages[step - 1]} 
-          alt="Background" 
-          fill 
-          className="object-cover object-center transition-all duration-700" 
-          priority
-        />
-      </div>
-
-      {/* Main Form Container with Glassmorphism */}
-      <div className="relative z-10 flex-grow flex items-center justify-center py-12 px-4">
+      {/* 1. HERO SECTION */}
+      <section className="relative w-full h-[85vh] min-h-[600px] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
         
-        <div className="w-full max-w-2xl bg-white/75 dark:bg-[#0B1120]/80 backdrop-blur-xl border border-white/40 dark:border-white/10 rounded-3xl shadow-2xl overflow-hidden">
+        {/* Background Image - Full Brightness */}
+        <div className="absolute inset-0 z-0">
+          <Image src="/hero-bg.png" alt="Happy family together" fill className="object-cover object-center" priority />
           
-          {/* Top Bar inside form: Home Button & Progress */}
-          <div className="relative">
-            <div className="bg-gray-200/50 dark:bg-gray-800/50 h-2 w-full">
-              <div className="bg-primary h-full transition-all duration-300" style={{ width: `${(step / 4) * 100}%` }}></div>
-            </div>
-            
-            {/* Home Link */}
-            <Link href="/" className="absolute top-4 left-6 text-sm font-bold text-primary hover:underline flex items-center gap-1">
-              ← Back to Home
+          {/* Trick: Ek dark blurred circle sirf text ke peeche, taaki photo full bright rahe */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-[80%] md:w-[60%] h-[60%] bg-black/50 blur-[100px] rounded-full"></div>
+          </div>
+
+          {/* Niche wale section se blend karne ke liye gradient */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg to-transparent"></div>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto mt-10">
+          
+          {/* H1 Text - White part with strong shadow */}
+          <h1 className="text-[40px] md:text-[64px] font-extrabold leading-tight text-white mb-2 tracking-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.9)]">
+            {t("heroTitle")}
+          </h1>
+          
+          {/* H1 Text - Gradient part with THICK outline/shadow so it pops */}
+          <h1 className="text-[40px] md:text-[64px] font-extrabold leading-tight mb-8 tracking-tight">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400 drop-shadow-[0_2px_2px_rgba(0,0,0,1)]">
+              {t("heroTitleHighlight")}
+            </span>
+          </h1>
+          
+          {/* Subtitle - Bold white with strong black shadow */}
+          <p className="text-lg md:text-2xl text-white font-bold mb-10 max-w-2xl mx-auto drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
+            {t("heroSubtitle")}
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="#features" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary-hover shadow-lg transition-all transform hover:-translate-y-1">
+              {t("btnPrimary")}
+            </Link>
+            {/* Yahan Link fix kiya gaya hai (href="#roles") taaki click karne par portal section par scroll ho */}
+            <Link href="#roles" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-black/40 backdrop-blur-md border-2 border-white/50 text-white font-bold text-lg rounded-xl hover:bg-black/60 transition-all shadow-lg">
+              {t("btnSecondary")}
             </Link>
           </div>
+        </div>
+      </section>
 
-          <div className="p-8 md:p-10 pt-12">
-            <h2 className="text-3xl font-extrabold text-text mb-2">Parent Registration</h2>
-            <p className="text-text/60 mb-8 font-medium">
-              Step {step} of 4: {step === 1 ? "Basic Details" : step === 2 ? "Family Connection" : step === 3 ? "Health Profile" : "Privacy & Consent"}
-            </p>
-
-            {/* STEP 1: Basic Details */}
-            {step === 1 && (
-              <div className="space-y-5 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <div>
-                  <label className="block text-sm font-bold mb-2">Full Name</label>
-                  <input type="text" className="w-full h-12 px-4 rounded-xl border border-border bg-white/50 dark:bg-black/50 focus:ring-2 focus:ring-primary outline-none" placeholder="e.g. Ramesh Kumar" />
+      {/* 2. REQUEST-TO-RESOLUTION WORKFLOW */}
+      <section className="w-full bg-bg dark:bg-[#0F172A] py-20 px-4 border-b border-border">
+        <div className="max-w-[1200px] mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-text mb-4">{t("workflowTitle")}</h2>
+          <p className="text-lg text-text/60 mb-16">{t("workflowSubtitle")}</p>
+          
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative">
+            <div className="hidden md:block absolute top-1/2 left-[10%] right-[10%] h-1 bg-border -z-10 -translate-y-1/2"></div>
+            
+            {workflow.map((item, idx) => (
+              <div key={idx} className="flex-1 flex flex-col items-center bg-card p-6 rounded-2xl border border-border shadow-sm w-full md:w-auto relative z-10">
+                <div className="w-16 h-16 rounded-full bg-bg border-2 border-primary flex items-center justify-center text-2xl mb-4 shadow-sm">
+                  {item.icon}
                 </div>
-                <div>
-                  <label className="block text-sm font-bold mb-2">Phone Number</label>
-                  <input type="tel" className="w-full h-12 px-4 rounded-xl border border-border bg-white/50 dark:bg-black/50 focus:ring-2 focus:ring-primary outline-none" placeholder="+91 XXXXX XXXXX" />
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-bold mb-2">Age Group</label>
-                    <select className="w-full h-12 px-4 rounded-xl border border-border bg-white/50 dark:bg-black/50 outline-none">
-                      <option>50-60 Years</option>
-                      <option>60-70 Years</option>
-                      <option>70+ Years</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold mb-2">City Pincode</label>
-                    <input type="text" className="w-full h-12 px-4 rounded-xl border border-border bg-white/50 dark:bg-black/50 outline-none" placeholder="e.g. 110001" />
-                  </div>
-                </div>
+                <h3 className="text-lg font-bold text-text mb-2">{item.step}</h3>
+                <p className="text-sm text-text/70 text-center">{item.desc}</p>
               </div>
-            )}
-
-            {/* STEP 2: Family ID (Mandatory) */}
-            {step === 2 && (
-              <div className="space-y-5 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <div className="bg-blue-50/80 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 p-4 rounded-xl text-sm mb-4">
-                  Aapki Family ID generate ho gayi hai. Ise apne bachhon ko bhejein taaki wo aapse link kar sakein.
-                </div>
-                <div>
-                  <label className="block text-sm font-bold mb-2">Your Family ID</label>
-                  <div className="flex gap-2">
-                    <input type="text" value="TBP-84920" readOnly className="w-full h-12 px-4 rounded-xl border border-border bg-white/60 dark:bg-black/60 font-mono font-bold text-lg" />
-                    <button className="px-6 bg-primary text-white rounded-xl font-bold hover:bg-primary-hover transition-colors">Copy</button>
-                  </div>
-                </div>
-                <hr className="my-6 border-border/50" />
-                <div>
-                  <label className="block text-sm font-bold mb-2">Child's Phone / Email (Mandatory)</label>
-                  <input type="text" className="w-full h-12 px-4 rounded-xl border border-border bg-white/50 dark:bg-black/50 outline-none" placeholder="Child's contact info" />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold mb-2">Relation</label>
-                  <select className="w-full h-12 px-4 rounded-xl border border-border bg-white/50 dark:bg-black/50 outline-none">
-                    <option>Son</option>
-                    <option>Daughter</option>
-                    <option>Relative</option>
-                  </select>
-                </div>
-              </div>
-            )}
-
-            {/* STEP 3: Health Profile */}
-            {step === 3 && (
-              <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <div>
-                  <label className="block text-sm font-bold mb-3">Known Illnesses (Select all that apply)</label>
-                  <div className="grid grid-cols-2 gap-3">
-                    {["Diabetes (Sugar)", "Blood Pressure", "Heart Disease", "Asthma", "Arthritis", "None"].map((ill) => (
-                      <label key={ill} className="flex items-center gap-3 p-3 border border-border rounded-xl cursor-pointer bg-white/40 dark:bg-black/40 hover:bg-white/80 transition-colors">
-                        <input type="checkbox" className="w-5 h-5 text-primary rounded" />
-                        <span className="text-sm font-medium">{ill}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-bold mb-2">Current Medications</label>
-                  <div className="space-y-3">
-                    <div className="flex gap-2">
-                      <input type="text" placeholder="Medicine Name" className="flex-1 h-12 px-3 rounded-xl border border-border bg-white/50 dark:bg-black/50 outline-none" />
-                      <input type="text" placeholder="Dosage" className="w-1/3 h-12 px-3 rounded-xl border border-border bg-white/50 dark:bg-black/50 outline-none" />
-                    </div>
-                    <button className="text-sm text-primary font-bold hover:underline">+ Add Another Medicine</button>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* STEP 4: Consent */}
-            {step === 4 && (
-              <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <p className="text-sm font-medium mb-4">Choose what you want to share with your family:</p>
-                
-                <label className="flex items-center justify-between p-4 border border-border rounded-xl cursor-pointer bg-white/40 dark:bg-black/40 hover:bg-white/80 transition-colors">
-                  <span className="font-medium">Share Medicine Status</span>
-                  <input type="checkbox" className="w-6 h-6 rounded-full text-primary focus:ring-primary" />
-                </label>
-                <label className="flex items-center justify-between p-4 border border-border rounded-xl cursor-pointer bg-white/40 dark:bg-black/40 hover:bg-white/80 transition-colors">
-                  <span className="font-medium">Share Mood / Check-in</span>
-                  <input type="checkbox" className="w-6 h-6 rounded-full text-primary focus:ring-primary" />
-                </label>
-                <label className="flex items-center justify-between p-4 border border-border rounded-xl cursor-pointer bg-white/40 dark:bg-black/40 hover:bg-white/80 transition-colors">
-                  <span className="font-medium">Share Location (during SOS only)</span>
-                  <input type="checkbox" defaultChecked className="w-6 h-6 rounded-full text-primary focus:ring-primary" />
-                </label>
-
-                <div className="mt-6 p-4 bg-white/50 dark:bg-black/50 rounded-xl border border-border text-sm">
-                  <label className="flex items-start gap-3 cursor-pointer">
-                    <input type="checkbox" required className="w-5 h-5 mt-0.5 text-primary rounded" />
-                    <span className="text-text/80">I agree to share my data for care coordination as per the DPDP Act. I can withdraw consent anytime.</span>
-                  </label>
-                </div>
-              </div>
-            )}
-
-            {/* Navigation Buttons */}
-            <div className="flex justify-between mt-8 pt-6 border-t border-border/50">
-              {step > 1 ? (
-                <button onClick={handlePrev} className="px-6 py-3 rounded-xl font-bold border-2 border-border text-text hover:bg-white/50 dark:hover:bg-black/50 transition-colors">Back</button>
-              ) : <div></div>}
-              
-              {step < 4 ? (
-                <button onClick={handleNext} className="px-8 py-3 rounded-xl font-bold bg-primary text-white hover:bg-primary-hover shadow-lg transition-colors">Next Step →</button>
-              ) : (
-                <button 
-                  onClick={() => {
-                    alert("Registration Successful! Redirecting to Dashboard...");
-                    router.push("/dashboard"); 
-                  }} 
-                  className="px-8 py-3 rounded-xl font-bold bg-success text-white hover:bg-success/90 shadow-lg transition-colors"
-                >
-                  Complete Registration ✓
-                </button>
-              )}
-            </div>
-
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Common Footer Add kiya gaya hai */}
-      <Footer />
+      {/* 3. FEATURE CARDS (9 Cards Grid) */}
+      <section id="features" className="w-full bg-card py-24 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-text mb-4">{t("featuresTitle")}</h2>
+            <p className="text-lg text-text/60 max-w-2xl mx-auto">{t("featuresSubtitle")}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feat, idx) => (
+              <div key={idx} className={`bg-bg rounded-2xl p-8 border border-border border-t-4 ${feat.color} shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group`}>
+                <div className={`w-16 h-16 rounded-2xl ${feat.bg} flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform`}>
+                  {feat.icon}
+                </div>
+                <h3 className="text-xl font-bold text-text mb-3">{feat.title}</h3>
+                <p className="text-text/70 leading-relaxed text-sm md:text-base">{feat.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. ROLE SELECTION (PREMIUM CARDS) */}
+      <section id="roles" className="w-full bg-bg py-24 px-4">
+        <div className="max-w-[1200px] mx-auto text-center">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-text mb-4">{t("rolesTitle")}</h2>
+          <p className="text-lg text-text/60 mb-16">{t("rolesSubtitle")}</p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {portals.map((portal) => (
+              <Link 
+                key={portal.id} 
+                href={portal.href}
+                className={`group flex flex-col items-start p-8 bg-card border-2 border-border rounded-3xl transition-all duration-300 shadow-sm hover:shadow-2xl hover:-translate-y-2 ${portal.color}`}
+              >
+                {/* Icon with colored background */}
+                <div className={`w-20 h-20 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform duration-300 ${portal.iconBg}`}>
+                  {portal.icon}
+                </div>
+                
+                {/* Title */}
+                <h3 className="text-2xl font-bold text-text mb-3 group-hover:text-primary transition-colors text-left">
+                  {portal.label}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-text/70 text-sm leading-relaxed text-left mb-6 flex-grow">
+                  {portal.desc}
+                </p>
+
+                {/* Action Link */}
+                <div className="mt-auto pt-4 w-full border-t border-border flex items-center justify-between text-primary font-semibold text-sm group-hover:text-primary-hover">
+                  <span>Enter Portal</span>
+                  <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. FOOTER */}
+      <footer className="w-full bg-[#020617] text-white pt-16 pb-8 px-4 mt-auto border-t border-white/10">
+        <div className="max-w-[1200px] mx-auto flex flex-col items-center">
+          
+          {/* Emergency Disclaimer Banner */}
+          <div className="inline-flex items-center gap-3 bg-sos text-white px-6 py-3 rounded-xl font-bold mb-12 shadow-lg shadow-sos/20 text-center">
+            <span className="text-2xl">⚠️</span>
+            <p className="text-sm md:text-base">{t("footerDisclaimer")}</p>
+          </div>
+          
+          {/* Footer Links Row */}
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12 text-sm md:text-base font-medium text-gray-400">
+            <Link href="#" className="hover:text-white transition-colors">{t("footerAbout")}</Link>
+            <Link href="#" className="hover:text-white transition-colors">{t("footerPrivacy")}</Link>
+            <Link href="#" className="hover:text-white transition-colors">{t("footerTerms")}</Link>
+            <Link href="#" className="hover:text-white transition-colors">{t("footerContact")}</Link>
+          </div>
+          
+          {/* Divider Line */}
+          <div className="w-full h-px bg-white/10 mb-8 max-w-4xl mx-auto"></div>
+          
+          {/* Logo & Copyright */}
+          <div className="flex flex-col items-center justify-center gap-4 text-gray-500">
+            <div className="relative w-16 h-16 mb-2">
+              <Image src="/logo.png" alt="Logo" fill className="object-contain opacity-80" />
+            </div>
+            <p className="font-extrabold text-2xl text-white tracking-wide">{tApp("name")}</p>
+            <p className="text-sm">{t("footerRights")}</p>
+          </div>
+
+        </div>
+      </footer>
     </div>
   );
 }
