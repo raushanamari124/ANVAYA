@@ -18,43 +18,41 @@ export default function RegisterPerson() {
   const handleNext = () => setStep((prev) => Math.min(prev + 1, 4));
   const handlePrev = () => setStep((prev) => Math.max(prev - 1, 1));
 
-  // Har step ke liye alag background image
   const bgImages = [
-    "/helper-care.png",    // Step 1
-    "/video-call-bg.png",  // Step 2
-    "/medicine-bg.png",    // Step 3
-    "/meal-bg.png"         // Step 4
+    "/helper-care.png",    
+    "/video-call-bg.png",  
+    "/medicine-bg.png",    
+    "/meal-bg.png"         
   ];
 
   return (
-    <div className="flex flex-col min-h-screen relative">
+    // Root wrapper
+    <div className="flex flex-col min-h-screen bg-bg">
       
-      {/* Background Image - Fixed taaki scroll karne par bhi photo na hile */}
-      <div className="fixed inset-0 z-0">
-        <Image 
-          src={bgImages[step - 1]} 
-          alt="Background" 
-          fill 
-          className="object-cover object-center transition-all duration-700" 
-          priority
-        />
-        {/* Halka sa dark overlay taaki form ke text clear dikhein */}
-        <div className="absolute inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-sm"></div>
-      </div>
-
-      {/* Main Form Container - pt-28 taaki TopBar ke niche se start ho */}
-      <div className="relative z-10 flex-grow flex items-center justify-center py-12 px-4 pt-28 md:pt-32">
+      {/* 1. FORM SECTION (Yahan background image absolute hai, isliye sirf is part mein rahegi) */}
+      <div className="relative flex-grow flex items-center justify-center py-12 px-4 pt-28 md:pt-32">
         
-        {/* Form Card - bg-white/60 aur backdrop-blur-md se background image dikhegi */}
-        <div className="w-full max-w-4xl min-h-[600px] flex flex-col bg-white/60 dark:bg-[#0B1120]/70 backdrop-blur-md border border-white/60 dark:border-white/20 rounded-3xl shadow-2xl overflow-hidden">
+        {/* Background Image - Absolute taaki sirf is section tak hi rahe */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <Image 
+            src={bgImages[step - 1]} 
+            alt="Background" 
+            fill 
+            className="object-cover object-center transition-all duration-700" 
+            priority
+          />
+          {/* Halka sa dark overlay taaki form ke text clear dikhein */}
+          <div className="absolute inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-sm"></div>
+        </div>
+
+        {/* Form Card */}
+        <div className="relative z-10 w-full max-w-4xl min-h-[600px] flex flex-col bg-white/60 dark:bg-[#0B1120]/70 backdrop-blur-md border border-white/60 dark:border-white/20 rounded-3xl shadow-2xl overflow-hidden">
           
           {/* Top Bar inside form: Home Button & Progress */}
           <div className="relative">
             <div className="bg-gray-200/30 dark:bg-gray-800/50 h-2 w-full">
               <div className="bg-primary h-full transition-all duration-300" style={{ width: `${(step / 4) * 100}%` }}></div>
             </div>
-            
-            {/* Home Link */}
             <Link href="/" className="absolute top-6 left-8 text-sm font-bold text-primary hover:underline flex items-center gap-1">
               ← Back to Home
             </Link>
@@ -97,7 +95,7 @@ export default function RegisterPerson() {
               </div>
             )}
 
-            {/* STEP 2: Family ID (Mandatory) */}
+            {/* STEP 2: Family ID */}
             {step === 2 && (
               <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <div className="bg-blue-50/80 dark:bg-blue-900/40 border border-blue-200/50 dark:border-blue-800 p-5 rounded-xl text-base backdrop-blur-sm">
@@ -208,8 +206,8 @@ export default function RegisterPerson() {
         </div>
       </div>
 
-      {/* Footer - Ab yeh page ke end me properly dikhega */}
-      <div className="relative z-10 w-full mt-auto">
+      {/* 2. FOOTER SECTION (Ab yeh bilkul solid rahega, background image iske peeche nahi aayegi) */}
+      <div className="relative z-10 w-full mt-auto bg-[#020617]">
         <Footer />
       </div>
     </div>
