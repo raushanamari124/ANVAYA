@@ -17,12 +17,12 @@ export default function Footer() {
           <p className="text-sm md:text-base">{t("footerDisclaimer")}</p>
         </div>
         
-        {/* Footer Links Row */}
+        {/* Footer Links Row - Links Updated to actual pages */}
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12 text-sm md:text-base font-medium text-gray-400">
-          <Link href="#" className="hover:text-white transition-colors">{t("footerAbout")}</Link>
-          <Link href="#" className="hover:text-white transition-colors">{t("footerPrivacy")}</Link>
-          <Link href="#" className="hover:text-white transition-colors">{t("footerTerms")}</Link>
-          <Link href="#" className="hover:text-white transition-colors">{t("footerContact")}</Link>
+          <Link href="/about" className="hover:text-white transition-colors">{t("footerAbout")}</Link>
+          <Link href="/privacy" className="hover:text-white transition-colors">{t("footerPrivacy")}</Link>
+          <Link href="/terms" className="hover:text-white transition-colors">{t("footerTerms")}</Link>
+          <Link href="/contact" className="hover:text-white transition-colors">{t("footerContact")}</Link>
         </div>
         
         {/* Divider Line */}
