@@ -113,4 +113,25 @@
     "continue": "Continue", 
     "success": "Registration successful!"
   }
+    "dashboard": {
+    "greeting": "Good Morning, Ramesh Ji",
+    "statusCheck": "I am fine today",
+    "statusCheckDesc": "Tap to let your family know you are safe.",
+    "sos": "SOS Emergency",
+    "upcoming": "Upcoming Today",
+    "medReminder": "Medicine Reminder",
+    "medTime": "10:00 AM - Blood Pressure Tablet",
+    "mealReminder": "Meal & Hydration",
+    "mealTime": "1:00 PM - Lunch time",
+    "videoCall": "Video Call Reminder",
+    "videoCallDesc": "Scheduled with your Son at 6:00 PM",
+    "joinCall": "Join Call",
+    "orderServices": "Order Services",
+    "grocery": "Grocery Delivery",
+    "groceryDesc": "Fresh vegetables, milk, and daily needs.",
+    "medicine": "Medicine Pickup",
+    "medicineDesc": "Get prescriptions delivered from the pharmacy.",
+    "voiceAssist": "Tap to Speak",
+    "voiceAssistDesc": "Say 'I need help' or 'Order milk'"
+  },
 }
