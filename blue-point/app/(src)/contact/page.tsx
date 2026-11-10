@@ -1,26 +1,40 @@
 import Link from "next/link";
+import Image from "next/image";
 import Footer from "@/components/Footer";
 
 export default function ContactSupport() {
   return (
-    <div className="flex flex-col min-h-screen bg-bg">
+    <div className="relative flex flex-col min-h-screen bg-bg">
       
-      {/* Main Container */}
-      <div className="max-w-[1000px] mx-auto w-full px-4 py-24 flex-grow mt-10">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0 fixed">
+        <Image 
+          src="/hero-bg.png" 
+          alt="Contact Background" 
+          fill 
+          className="object-cover object-center"
+          priority
+        />
+        {/* Light/Dark Overlay taaki text clear padhne me aaye */}
+        <div className="absolute inset-0 bg-white/80 dark:bg-[#0B1120]/85 backdrop-blur-md"></div>
+      </div>
+
+      {/* Main Content Container */}
+      <div className="relative z-10 max-w-[1000px] mx-auto w-full px-4 py-24 flex-grow mt-10">
         
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-text mb-4">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-text mb-4 drop-shadow-sm">
             Get in <span className="text-primary">Touch</span>
           </h1>
-          <p className="text-lg md:text-xl text-text/60 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-text/80 max-w-2xl mx-auto font-medium">
             We are here to help! Whether you need to report a problem, clarify a doubt, or simply learn more about how we care for your family.
           </p>
         </div>
 
         {/* Center Info Card */}
-        <div className="bg-blue-50 dark:bg-primary/10 border border-blue-100 dark:border-primary/20 rounded-3xl p-10 text-center mb-12 shadow-sm relative overflow-hidden">
-          <div className="w-16 h-16 bg-white dark:bg-card rounded-full flex items-center justify-center mx-auto mb-6 shadow-md text-primary text-3xl">
+        <div className="bg-card/90 backdrop-blur-xl border border-border rounded-3xl p-10 text-center mb-12 shadow-xl relative overflow-hidden">
+          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm text-primary text-3xl">
             💬
           </div>
           <h2 className="text-2xl font-bold text-text mb-4">How can we help you?</h2>
@@ -37,23 +51,26 @@ export default function ContactSupport() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           {/* Card 1: Email Support */}
-          <div className="bg-card border border-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow flex flex-col">
-            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400 text-2xl mb-6">
+          <div className="bg-card/90 backdrop-blur-xl border border-border rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all flex flex-col">
+            <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-xl flex items-center justify-center text-red-600 dark:text-red-400 text-2xl mb-6">
               ✉️
             </div>
             <h3 className="text-xl font-bold text-text mb-3">Email Support</h3>
             <p className="text-text/60 text-sm mb-6 leading-relaxed flex-grow">
               For queries, bug reports, or suggestions, please drop us an email. We usually reply within 24 hours.
             </p>
-            {/* Gmail Link Added Here */}
-            <a href="mailto:raushanamari124@gmail.com" className="flex items-center gap-2 text-primary font-semibold text-sm hover:underline">
-              <span className="w-2 h-2 rounded-full bg-primary"></span>
-              raushanamari124@gmail.com
+            
+            {/* Naya Gmail Button with Logo */}
+            <a href="mailto:raushanamari124@gmail.com" className="mt-auto flex items-center justify-center gap-2 w-full h-11 bg-red-50 hover:bg-red-100 dark:bg-red-900/20 dark:hover:bg-red-900/40 text-red-600 dark:text-red-400 font-semibold text-sm rounded-xl border border-red-200 dark:border-red-800 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+              </svg>
+              Email Us
             </a>
           </div>
 
           {/* Card 2: Our Channels */}
-          <div className="bg-card border border-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+          <div className="bg-card/90 backdrop-blur-xl border border-border rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all flex flex-col">
             <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center text-green-600 dark:text-green-400 text-2xl mb-6">
               💬
             </div>
@@ -61,20 +78,18 @@ export default function ContactSupport() {
             <p className="text-text/60 text-sm mb-6 leading-relaxed flex-grow">
               Connect with us on WhatsApp for quick updates or call our senior helpline for immediate assistance.
             </p>
-            <div className="space-y-3">
-              <a href="#" className="flex items-center gap-2 text-text font-semibold text-sm hover:text-green-500 transition-colors">
-                <span className="w-2 h-2 rounded-full bg-green-500"></span>
-                WhatsApp Support
+            <div className="space-y-3 mt-auto">
+              <a href="#" className="flex items-center justify-center gap-2 w-full h-11 bg-green-50 hover:bg-green-100 dark:bg-green-900/20 dark:hover:bg-green-900/40 text-green-600 dark:text-green-400 font-semibold text-sm rounded-xl border border-green-200 dark:border-green-800 transition-colors">
+                <span className="text-lg">📱</span> WhatsApp
               </a>
-              <a href="tel:+919999988888" className="flex items-center gap-2 text-text font-semibold text-sm hover:text-sos transition-colors">
-                <span className="w-2 h-2 rounded-full bg-sos"></span>
-                Senior Helpline (24/7)
+              <a href="tel:+919999988888" className="flex items-center justify-center gap-2 w-full h-11 bg-sos/10 hover:bg-sos/20 text-sos font-semibold text-sm rounded-xl border border-sos/20 transition-colors">
+                <span className="text-lg">📞</span> Helpline (24/7)
               </a>
             </div>
           </div>
 
           {/* Card 3: The Team & LinkedIn */}
-          <div className="bg-card border border-border rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+          <div className="bg-card/90 backdrop-blur-xl border border-border rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all flex flex-col">
             <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center text-purple-600 dark:text-purple-400 text-2xl mb-6">
               👥
             </div>
@@ -83,14 +98,13 @@ export default function ContactSupport() {
               Dedicated to providing you with the best free care coordination tools for your loved ones.
             </p>
             
-            <div className="bg-bg border border-border p-4 rounded-xl flex flex-col items-center justify-center gap-2">
+            <div className="mt-auto bg-bg/50 border border-border p-4 rounded-xl flex flex-col items-center justify-center gap-2">
               <p className="text-xs text-text/70 font-medium text-center uppercase tracking-wider">
                 Built with ❤️ by
               </p>
               
-              {/* LinkedIn Logo & Profile Link */}
               <a 
-                href="https://www.linkedin.com/in/raushanamari124" // Yahan apna actual link daal lein agar alag ho
+                href="https://www.linkedin.com/in/raushanamari124" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-[#0A66C2] dark:text-blue-400 font-extrabold text-lg hover:scale-105 transition-transform"
@@ -106,7 +120,7 @@ export default function ContactSupport() {
         </div>
       </div>
 
-      <div className="w-full bg-[#020617] mt-auto"><Footer /></div>
+      <div className="relative z-10 w-full bg-[#020617] mt-auto"><Footer /></div>
     </div>
   );
 }
