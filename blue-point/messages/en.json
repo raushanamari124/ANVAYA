@@ -114,6 +114,9 @@
     "success": "Registration successful!"
   },
     "dashboard": {
+    "doctorAppt": "Doctor Appointment",
+    "doctorApptDesc": "Dr. Sharma (Cardiologist)",
+    "doctorApptTime": "Tomorrow, 10:00 AM",
     "greeting": "Good Morning, Ramesh Ji",
     "statusCheck": "I am fine today",
     "statusCheckDesc": "Tap to let your family know you are safe.",
