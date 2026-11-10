@@ -112,7 +112,7 @@
     "consent": "I agree to share my data for this platform as per the DPDP Act.", 
     "continue": "Continue", 
     "success": "Registration successful!"
-  }
+  },
     "dashboard": {
     "greeting": "Good Morning, Ramesh Ji",
     "statusCheck": "I am fine today",
@@ -133,5 +133,5 @@
     "medicineDesc": "Get prescriptions delivered from the pharmacy.",
     "voiceAssist": "Tap to Speak",
     "voiceAssistDesc": "Say 'I need help' or 'Order milk'"
-  },
+  }
 }
