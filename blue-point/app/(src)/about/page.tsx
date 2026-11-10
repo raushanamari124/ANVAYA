@@ -82,7 +82,6 @@ export default function AboutUs() {
       <section className="w-full max-w-[1200px] mx-auto py-20 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1 relative rounded-3xl overflow-hidden h-[300px] md:h-[400px] shadow-2xl">
-             {/* Yahan aap hero image ya koi aur image use kar sakte hain */}
              <img src="/hero-bg.png" alt="Technology" className="object-cover w-full h-full" />
              <div className="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
           </div>
@@ -117,7 +116,6 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* Footer */}
       <div className="w-full bg-[#020617] mt-auto">
         <Footer />
       </div>
