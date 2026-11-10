@@ -8,22 +8,17 @@ import Footer from "@/components/Footer";
 export default function RegisterPerson() {
   const router = useRouter();
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    name: "", phone: "", ageGroup: "60-70", pincode: "",
-    familyId: "TBP-84920", childPhone: "", relation: "Son",
-    illnesses: [] as string[], medications: [{ name: "", dosage: "" }],
-    shareMedicine: false, shareMood: false, shareSOS: true,
-  });
-
-  const handleNext = () => setStep((prev) => Math.min(prev + 1, 4));
-  const handlePrev = () => setStep((prev) => Math.max(prev - 1, 1));
-
+  
+  // Background images array
   const bgImages = [
     "/helper-care.png",    
     "/video-call-bg.png",  
     "/medicine-bg.png",    
     "/meal-bg.png"         
   ];
+
+  const handleNext = () => setStep((prev) => Math.min(prev + 1, 4));
+  const handlePrev = () => setStep((prev) => Math.max(prev - 1, 1));
 
   return (
     // Root wrapper
@@ -193,7 +188,8 @@ export default function RegisterPerson() {
                 <button 
                   onClick={() => {
                     alert("Registration Successful! Redirecting to Dashboard...");
-                    router.push("/dashboard"); 
+                    // Naye folder structure ke hisaab se link update kiya gaya hai
+                    router.push("/dashboards/parent_dashboard"); 
                   }} 
                   className="px-10 py-4 rounded-xl font-bold bg-success text-white hover:bg-success/90 shadow-xl transition-colors text-lg"
                 >
@@ -206,7 +202,7 @@ export default function RegisterPerson() {
         </div>
       </div>
 
-      {/* 2. FOOTER SECTION (Ab yeh bilkul solid rahega, background image iske peeche nahi aayegi) */}
+      {/* 2. FOOTER SECTION */}
       <div className="relative z-10 w-full mt-auto bg-[#020617]">
         <Footer />
       </div>
