@@ -1,137 +1,155 @@
 "use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
-import Image from "next/image";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 
-export default function RegisterFamily() {
-  const router = useRouter();
-  const [step, setStep] = useState(1);
-
-  const handleNext = () => setStep((prev) => Math.min(prev + 1, 2));
-  const handlePrev = () => setStep((prev) => Math.max(prev - 1, 1));
+export default function FamilyDashboard() {
+  const t = useTranslations("familyDashboard");
+  const [activeSos, setActiveSos] = useState(true); // Demo ke liye true
 
   return (
     <div className="flex flex-col min-h-screen bg-bg">
-      
-      {/* Main Form Section */}
-      <div className="relative flex-grow flex items-center justify-center py-12 px-4 pt-28 md:pt-32">
+      <div className="max-w-[1400px] mx-auto w-full px-4 py-8 space-y-6 flex-grow mt-16">
         
-        {/* Background Image (Same as Home) */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <Image src="/hero-bg.png" alt="Background" fill className="object-cover object-center" priority />
-          <div className="absolute inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm"></div>
+        {/* Header */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <h1 className="text-3xl md:text-4xl font-extrabold text-text">{t("greeting")}</h1>
+            <p className="text-text/70 text-lg">{t("subtitle")}</p>
+          </div>
+          <div className="flex gap-3">
+            <button className="px-6 h-12 bg-card border border-border text-text font-bold rounded-xl shadow-sm hover:bg-gray-50 transition-colors flex items-center gap-2">
+              📞 {t("callingPapa")}
+            </button>
+            <Link href="/" className="px-6 h-12 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary-hover transition-colors flex items-center gap-2">
+              🏠 Home
+            </Link>
+          </div>
         </div>
 
-        {/* Form Card */}
-        <div className="relative z-10 w-full max-w-2xl min-h-[500px] flex flex-col bg-white/90 dark:bg-[#0B1120]/90 backdrop-blur-xl border border-white/50 dark:border-white/20 rounded-3xl shadow-2xl overflow-hidden">
-          
-          {/* Progress Bar */}
-          <div className="bg-gray-200/30 dark:bg-gray-800/50 h-2 w-full">
-            <div className="bg-success h-full transition-all duration-300" style={{ width: `${(step / 2) * 100}%` }}></div>
-          </div>
-
-          <div className="p-8 md:p-12 flex-grow flex flex-col">
-            <div className="flex justify-between items-center mb-6">
+        {/* SOS Alert */}
+        {activeSos && (
+          <div className="bg-sos text-white rounded-3xl p-6 md:p-8 shadow-2xl shadow-sos/30 border-4 border-red-400 animate-pulse-slow flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-6">
+              <span className="text-6xl">🚨</span>
               <div>
-                <h2 className="text-3xl font-extrabold text-text">Family Registration</h2>
-                <p className="text-text/60 font-medium mt-1">
-                  Step {step} of 2: {step === 1 ? "Basic Details & Location" : "Link with Senior"}
-                </p>
+                <h2 className="text-2xl md:text-3xl font-extrabold tracking-wide mb-1">{t("sosAlert")}</h2>
+                <p className="text-lg text-red-100">{t("sosDesc")}</p>
               </div>
-              <Link href="/" className="text-sm font-bold text-primary hover:underline">
-                ← Back to Home
-              </Link>
+            </div>
+            <div className="flex gap-4 w-full md:w-auto">
+              <button className="flex-1 md:flex-none px-8 py-4 bg-white text-sos font-extrabold text-xl rounded-xl shadow-lg hover:bg-gray-100 transition-transform transform hover:scale-105">
+                {t("call112")}
+              </button>
+              <button 
+                onClick={() => setActiveSos(false)}
+                className="flex-1 md:flex-none px-6 py-4 bg-red-800 text-white font-bold rounded-xl hover:bg-red-900 transition-colors"
+              >
+                Dismiss
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          {/* Left Column */}
+          <div className="lg:col-span-1 space-y-6">
+            
+            {/* Status Card */}
+            <div className="bg-card border border-border rounded-3xl p-6 shadow-sm">
+              <h3 className="text-xl font-bold text-text mb-4 flex items-center gap-2">
+                👴 {t("fatherStatus")}
+              </h3>
+              <div className="bg-success/10 border border-success/20 rounded-2xl p-4 flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 bg-success text-white rounded-full flex items-center justify-center text-2xl">✓</div>
+                <p className="text-success font-bold text-lg">{t("statusFine")}</p>
+              </div>
+              
+              <div className="bg-bg border border-border rounded-2xl p-4">
+                <h4 className="font-bold text-text mb-2 flex items-center gap-2">💊 {t("medStatus")}</h4>
+                <p className="text-sm text-text/80">{t("medTaken")}</p>
+              </div>
             </div>
 
-            {/* STEP 1: Basic Details, Phone, Email, Location */}
-            {step === 1 && (
-              <div className="space-y-5 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <div>
-                  <label className="block text-sm font-bold mb-2">Full Name</label>
-                  <input type="text" className="w-full h-12 px-4 rounded-xl border border-border bg-white/70 dark:bg-black/50 focus:ring-2 focus:ring-success outline-none" placeholder="e.g. Rahul Kumar" />
+            {/* Tasks */}
+            <div className="bg-card border border-border rounded-3xl p-6 shadow-sm">
+              <h3 className="text-xl font-bold text-text mb-4 flex items-center gap-2">
+                📋 {t("tasks")}
+              </h3>
+              <div className="space-y-3 mb-4">
+                <div className="flex items-center gap-3 p-3 bg-bg rounded-xl border border-border">
+                  <input type="checkbox" className="w-5 h-5 rounded text-primary" />
+                  <p className="font-medium">{t("task1")}</p>
                 </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-bold mb-2">Mobile Number</label>
-                    <input type="tel" className="w-full h-12 px-4 rounded-xl border border-border bg-white/70 dark:bg-black/50 focus:ring-2 focus:ring-success outline-none" placeholder="+91 XXXXX XXXXX" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold mb-2">Email Address</label>
-                    <input type="email" className="w-full h-12 px-4 rounded-xl border border-border bg-white/70 dark:bg-black/50 focus:ring-2 focus:ring-success outline-none" placeholder="e.g. rahul@gmail.com" />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-bold mb-2">Password</label>
-                    <input type="password" className="w-full h-12 px-4 rounded-xl border border-border bg-white/70 dark:bg-black/50 focus:ring-2 focus:ring-success outline-none" placeholder="Create a strong password" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold mb-2">Current City Pincode</label>
-                    <input type="text" className="w-full h-12 px-4 rounded-xl border border-border bg-white/70 dark:bg-black/50 focus:ring-2 focus:ring-success outline-none" placeholder="e.g. 110001" />
-                  </div>
+                <div className="flex items-center gap-3 p-3 bg-bg rounded-xl border border-border">
+                  <input type="checkbox" className="w-5 h-5 rounded text-primary" />
+                  <p className="font-medium">{t("task2")}</p>
                 </div>
               </div>
-            )}
-
-            {/* STEP 2: Relation & Family ID */}
-            {step === 2 && (
-              <div className="space-y-5 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <div>
-                  <label className="block text-sm font-bold mb-2">Your Relation with the Senior</label>
-                  <select className="w-full h-12 px-4 rounded-xl border border-border bg-white/70 dark:bg-black/50 outline-none">
-                    <option>Son</option>
-                    <option>Daughter</option>
-                    <option>Son-in-law / Daughter-in-law</option>
-                    <option>Nephew / Niece</option>
-                    <option>Other Relative</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-bold mb-2">Senior's Family ID (Mandatory)</label>
-                  <p className="text-xs text-text/60 mb-2">Ask your parent for their Family ID (e.g., TBP-XXXXX) to link accounts.</p>
-                  <input type="text" className="w-full h-12 px-4 rounded-xl border border-border bg-white/70 dark:bg-black/50 font-mono font-bold text-lg focus:ring-2 focus:ring-success outline-none" placeholder="Enter Family ID here" />
-                </div>
-
-                <div className="mt-6 p-4 bg-success/10 border border-success/20 rounded-xl">
-                  <label className="flex items-start gap-3 cursor-pointer">
-                    <input type="checkbox" required className="w-5 h-5 mt-0.5 text-success rounded" />
-                    <span className="text-sm text-text/80">I agree that my parent has consented to share their health and location data with me as per DPDP Act.</span>
-                  </label>
-                </div>
-              </div>
-            )}
-
-            {/* Navigation Buttons */}
-            <div className="flex justify-between mt-auto pt-8">
-              {step > 1 ? (
-                <button onClick={handlePrev} className="px-6 py-3 rounded-xl font-bold border-2 border-border text-text hover:bg-white/50 transition-colors">Back</button>
-              ) : <div></div>}
-              
-              {step < 2 ? (
-                <button onClick={handleNext} className="px-8 py-3 rounded-xl font-bold bg-success text-white hover:bg-success/90 shadow-lg transition-colors">Next Step →</button>
-              ) : (
-                <button 
-                  onClick={() => {
-                    alert("Family Account Linked Successfully! Redirecting to Dashboard...");
-                    router.push("/dashboards/family_dashboard"); 
-                  }} 
-                  className="px-8 py-3 rounded-xl font-bold bg-primary text-white hover:bg-primary-hover shadow-lg transition-colors"
-                >
-                  Complete Registration ✓
-                </button>
-              )}
+              <button className="w-full py-3 border-2 border-dashed border-primary/40 text-primary font-bold rounded-xl hover:bg-primary/5 transition-colors">
+                {t("addTask")}
+              </button>
             </div>
 
           </div>
+
+          {/* Right Column (Approvals) */}
+          <div className="lg:col-span-2 space-y-6">
+            <div className="bg-card border border-border rounded-3xl p-6 md:p-8 shadow-sm h-full">
+              <h3 className="text-2xl font-bold text-text mb-6 flex items-center gap-3">
+                ⚠️ {t("pendingApprovals")}
+              </h3>
+              
+              <div className="space-y-4">
+                {/* Grocery */}
+                <div className="bg-bg border border-border rounded-2xl p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                  <div className="flex items-center gap-4">
+                    <span className="text-4xl bg-blue-100 text-blue-600 p-3 rounded-2xl">🛒</span>
+                    <div>
+                      <h4 className="text-xl font-bold text-text">{t("groceryReq")}</h4>
+                      <p className="text-text/70">{t("groceryItems")}</p>
+                      <p className="text-sm text-primary font-semibold mt-1">Estimated Cost: ₹150 - ₹200</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3 w-full md:w-auto">
+                    <button className="flex-1 md:flex-none px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary-hover transition-colors">
+                      {t("approveBtn")}
+                    </button>
+                    <button className="px-6 py-3 border border-border text-text font-bold rounded-xl hover:bg-gray-100 transition-colors">
+                      {t("declineBtn")}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Medicine */}
+                <div className="bg-bg border border-border rounded-2xl p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                  <div className="flex items-center gap-4">
+                    <span className="text-4xl bg-pink-100 text-pink-600 p-3 rounded-2xl">💊</span>
+                    <div>
+                      <h4 className="text-xl font-bold text-text">{t("medReq")}</h4>
+                      <p className="text-text/70">{t("medItems")}</p>
+                      <p className="text-sm text-primary font-semibold mt-1">Estimated Cost: ₹50 - ₹80</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3 w-full md:w-auto">
+                    <button className="flex-1 md:flex-none px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary-hover transition-colors">
+                      {t("approveBtn")}
+                    </button>
+                    <button className="px-6 py-3 border border-border text-text font-bold rounded-xl hover:bg-gray-100 transition-colors">
+                      {t("declineBtn")}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      {/* Footer */}
       <div className="relative z-10 w-full mt-auto bg-[#020617]">
         <Footer />
       </div>
