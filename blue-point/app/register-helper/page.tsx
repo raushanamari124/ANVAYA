@@ -18,7 +18,7 @@ export default function RegisterHelper() {
     // Admin approval ke liye message dikhayenge, redirect nahi karenge
   };
 
-  if (isSuccess) {
+    if (isSuccess) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-bg">
         <div className="text-center bg-card p-12 rounded-3xl shadow-xl border border-border max-w-lg mx-auto">
@@ -27,17 +27,18 @@ export default function RegisterHelper() {
           </div>
           <h1 className="text-3xl font-extrabold text-text mb-2">Verification Pending</h1>
           <p className="text-text/60 mb-6">
-            Thank you for joining as a Helper! Our Admin team is reviewing your application and ID. 
-            You will be able to accept requests once approved.
+            Thank you for joining as a Helper! Our Admin team is reviewing your application.
+            (For Demo purposes, you can click below to view the Helper Dashboard)
           </p>
-          <Link href="/" className="px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover transition-colors">
-            Back to Home
+          
+          {/* Naya Button Dashboard par jane ke liye */}
+          <Link href="/dashboards/helper_dashboard" className="px-8 py-4 bg-orange-500 text-white font-bold rounded-xl hover:bg-orange-600 transition-colors shadow-lg">
+            Go to Helper Dashboard →
           </Link>
         </div>
       </div>
     );
   }
-
   return (
     <div className="flex flex-col min-h-screen bg-bg">
       
