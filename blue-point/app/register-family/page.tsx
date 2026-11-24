@@ -8,9 +8,34 @@ import Footer from "@/components/Footer";
 export default function RegisterFamily() {
   const router = useRouter();
   const [step, setStep] = useState(1);
+  const [isSuccess, setIsSuccess] = useState(false); // Naya state success ke liye
 
   const handleNext = () => setStep((prev) => Math.min(prev + 1, 2));
   const handlePrev = () => setStep((prev) => Math.max(prev - 1, 1));
+
+  // Ye function complete registration par chalega
+  const handleComplete = () => {
+    setIsSuccess(true);
+    // 1.5 second baad automatically dashboard par bhej dega
+    setTimeout(() => {
+      router.push("/dashboards/family_dashboard");
+    }, 1500);
+  };
+
+  // Agar success hai, toh ye screen dikhegi
+  if (isSuccess) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-bg">
+        <div className="text-center bg-card p-12 rounded-3xl shadow-xl border border-border">
+          <div className="w-20 h-20 bg-success/20 text-success rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+            ✓
+          </div>
+          <h1 className="text-3xl font-extrabold text-text mb-2">Account Linked Successfully!</h1>
+          <p className="text-text/60">Redirecting you to your Family Dashboard...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-bg">
@@ -45,7 +70,7 @@ export default function RegisterFamily() {
               </Link>
             </div>
 
-            {/* STEP 1: Basic Details, Phone, Email, Location */}
+            {/* STEP 1 */}
             {step === 1 && (
               <div className="space-y-5 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <div>
@@ -77,7 +102,7 @@ export default function RegisterFamily() {
               </div>
             )}
 
-            {/* STEP 2: Relation & Family ID */}
+            {/* STEP 2 */}
             {step === 2 && (
               <div className="space-y-5 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <div>
@@ -115,11 +140,9 @@ export default function RegisterFamily() {
               {step < 2 ? (
                 <button onClick={handleNext} className="px-8 py-3 rounded-xl font-bold bg-success text-white hover:bg-success/90 shadow-lg transition-colors">Next Step →</button>
               ) : (
+                // Yahan onClick mein handleComplete function call kiya gaya hai
                 <button 
-                  onClick={() => {
-                    alert("Family Account Linked Successfully! Redirecting to Dashboard...");
-                    router.push("/dashboards/family_dashboard"); 
-                  }} 
+                  onClick={handleComplete} 
                   className="px-8 py-3 rounded-xl font-bold bg-primary text-white hover:bg-primary-hover shadow-lg transition-colors"
                 >
                   Complete Registration ✓
@@ -131,7 +154,6 @@ export default function RegisterFamily() {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="relative z-10 w-full mt-auto bg-[#020617]">
         <Footer />
       </div>
