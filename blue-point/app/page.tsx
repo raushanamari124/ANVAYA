@@ -2,7 +2,8 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
-import Footer from "@/components/Footer"; // Footer import kiya
+import Footer from "@/components/Footer";
+import UnderConstruction from "@/components/UnderConstruction"; // <-- Import kiya
 
 export default function Home() {
   const t = useTranslations("home");
@@ -174,7 +175,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. FOOTER (Using Common Component) */}
+      {/* 5. UNDER CONSTRUCTION POP-UP */}
+      <UnderConstruction />
+
+      {/* 6. FOOTER */}
       <Footer />
       
     </div>
