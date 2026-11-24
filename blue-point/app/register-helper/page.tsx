@@ -13,9 +13,12 @@ export default function RegisterHelper() {
   const handleNext = () => setStep((prev) => Math.min(prev + 1, 2));
   const handlePrev = () => setStep((prev) => Math.max(prev - 1, 1));
 
-  const handleComplete = () => {
+    const handleComplete = () => {
     setIsSuccess(true);
-    // Admin approval ke liye message dikhayenge, redirect nahi karenge
+    // 2.5 second baad automatically dashboard par bhej dega
+    setTimeout(() => {
+      router.push("/dashboards/helper_dashboard"); 
+    }, 2500);
   };
 
     if (isSuccess) {
