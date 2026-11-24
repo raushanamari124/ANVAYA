@@ -17,6 +17,8 @@
   },
   "home": {
     "heroTitle": "Miles Apart,",
+    "wipBadge": "🚧 Work in Progress",
+    "wipText": "This platform is currently a prototype under active development. Some backend features (like real-time data saving) are being integrated.",
     "heroTitleHighlight": "Yet Right by Their Side.",
     "heroSubtitle": "Seamlessly coordinate daily well-being, healthcare access, and emergency safety for your loved ones back home.",
     "trustBadge": "✓ DPDP Privacy Compliant  •  ✓ Verified Local Helpers  •  ✓ 24/7 Safety Tracking",
