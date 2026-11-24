@@ -13,11 +13,11 @@ export default function RegisterDoctor() {
   const handleNext = () => setStep((prev) => Math.min(prev + 1, 2));
   const handlePrev = () => setStep((prev) => Math.max(prev - 1, 1));
 
-  const handleComplete = () => {
+    const handleComplete = () => {
     setIsSuccess(true);
     setTimeout(() => {
-      // Abhi ke liye home par redirect kar rahe hain, baad mein doctor dashboard banayenge
-      router.push("/"); 
+      // Pehle yahan router.push("/") tha, usko update karein:
+      router.push("/dashboards/doctor_dashboard"); 
     }, 2000);
   };
 
