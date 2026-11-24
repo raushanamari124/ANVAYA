@@ -21,21 +21,21 @@ export default function FamilyDashboard() {
           className="object-cover object-center" 
           priority
         />
-        {/* Dark overlay taaki dashboard ke white cards aur text clear dikhein */}
-        <div className="absolute inset-0 bg-bg/85 dark:bg-[#0B1120]/90 backdrop-blur-md"></div>
+        {/* DARK OVERLAY HATAKAR LIGHT OVERLAY KAR DIYA HAI */}
+        <div className="absolute inset-0 bg-white/70 dark:bg-black/70 backdrop-blur-[2px]"></div>
       </div>
 
-      {/* MAIN CONTENT (z-10 taaki background ke upar dikhe) */}
+      {/* MAIN CONTENT */}
       <div className="relative z-10 max-w-[1400px] mx-auto w-full px-4 py-8 space-y-6 flex-grow mt-16">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white/60 dark:bg-[#0B1120]/60 p-4 rounded-2xl backdrop-blur-md border border-white/20">
           <div>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-text drop-shadow-sm">{t("greeting")}</h1>
+            <h1 className="text-3xl md:text-4xl font-extrabold text-text">{t("greeting")}</h1>
             <p className="text-text/80 text-lg font-medium">{t("subtitle")}</p>
           </div>
           <div className="flex gap-3">
-            <button className="px-6 h-12 bg-card/90 backdrop-blur-md border border-border text-text font-bold rounded-xl shadow-sm hover:bg-gray-50 transition-colors flex items-center gap-2">
+            <button className="px-6 h-12 bg-white dark:bg-gray-800 border border-border text-text font-bold rounded-xl shadow-sm hover:bg-gray-50 transition-colors flex items-center gap-2">
               📞 {t("callingPapa")}
             </button>
             <Link href="/" className="px-6 h-12 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary-hover transition-colors flex items-center gap-2">
@@ -75,7 +75,7 @@ export default function FamilyDashboard() {
           <div className="lg:col-span-1 space-y-6">
             
             {/* Status Card */}
-            <div className="bg-card/90 backdrop-blur-xl border border-border rounded-3xl p-6 shadow-lg">
+            <div className="bg-white/80 dark:bg-[#0B1120]/80 backdrop-blur-md border border-white/40 dark:border-white/10 rounded-3xl p-6 shadow-lg">
               <h3 className="text-xl font-bold text-text mb-4 flex items-center gap-2">
                 👴 {t("fatherStatus")}
               </h3>
@@ -84,23 +84,23 @@ export default function FamilyDashboard() {
                 <p className="text-success font-bold text-lg">{t("statusFine")}</p>
               </div>
               
-              <div className="bg-bg/50 border border-border rounded-2xl p-4">
+              <div className="bg-white/50 dark:bg-gray-800/50 border border-border rounded-2xl p-4">
                 <h4 className="font-bold text-text mb-2 flex items-center gap-2">💊 {t("medStatus")}</h4>
                 <p className="text-sm text-text/80">{t("medTaken")}</p>
               </div>
             </div>
 
             {/* Tasks */}
-            <div className="bg-card/90 backdrop-blur-xl border border-border rounded-3xl p-6 shadow-lg">
+            <div className="bg-white/80 dark:bg-[#0B1120]/80 backdrop-blur-md border border-white/40 dark:border-white/10 rounded-3xl p-6 shadow-lg">
               <h3 className="text-xl font-bold text-text mb-4 flex items-center gap-2">
                 📋 {t("tasks")}
               </h3>
               <div className="space-y-3 mb-4">
-                <div className="flex items-center gap-3 p-3 bg-bg/50 rounded-xl border border-border">
+                <div className="flex items-center gap-3 p-3 bg-white/50 dark:bg-gray-800/50 rounded-xl border border-border">
                   <input type="checkbox" className="w-5 h-5 rounded text-primary" />
                   <p className="font-medium">{t("task1")}</p>
                 </div>
-                <div className="flex items-center gap-3 p-3 bg-bg/50 rounded-xl border border-border">
+                <div className="flex items-center gap-3 p-3 bg-white/50 dark:bg-gray-800/50 rounded-xl border border-border">
                   <input type="checkbox" className="w-5 h-5 rounded text-primary" />
                   <p className="font-medium">{t("task2")}</p>
                 </div>
@@ -114,14 +114,14 @@ export default function FamilyDashboard() {
 
           {/* Right Column (Approvals) */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="bg-card/90 backdrop-blur-xl border border-border rounded-3xl p-6 md:p-8 shadow-lg h-full">
+            <div className="bg-white/80 dark:bg-[#0B1120]/80 backdrop-blur-md border border-white/40 dark:border-white/10 rounded-3xl p-6 md:p-8 shadow-lg h-full">
               <h3 className="text-2xl font-bold text-text mb-6 flex items-center gap-3">
                 ⚠️ {t("pendingApprovals")}
               </h3>
               
               <div className="space-y-4">
                 {/* Grocery */}
-                <div className="bg-bg/60 border border-border rounded-2xl p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div className="bg-white/60 dark:bg-gray-800/60 border border-border rounded-2xl p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                   <div className="flex items-center gap-4">
                     <span className="text-4xl bg-blue-100 text-blue-600 p-3 rounded-2xl">🛒</span>
                     <div>
@@ -134,14 +134,14 @@ export default function FamilyDashboard() {
                     <button className="flex-1 md:flex-none px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary-hover transition-colors">
                       {t("approveBtn")}
                     </button>
-                    <button className="px-6 py-3 border border-border text-text font-bold rounded-xl hover:bg-gray-100 transition-colors">
+                    <button className="px-6 py-3 border border-border text-text font-bold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                       {t("declineBtn")}
                     </button>
                   </div>
                 </div>
 
                 {/* Medicine */}
-                <div className="bg-bg/60 border border-border rounded-2xl p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div className="bg-white/60 dark:bg-gray-800/60 border border-border rounded-2xl p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                   <div className="flex items-center gap-4">
                     <span className="text-4xl bg-pink-100 text-pink-600 p-3 rounded-2xl">💊</span>
                     <div>
@@ -154,7 +154,7 @@ export default function FamilyDashboard() {
                     <button className="flex-1 md:flex-none px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary-hover transition-colors">
                       {t("approveBtn")}
                     </button>
-                    <button className="px-6 py-3 border border-border text-text font-bold rounded-xl hover:bg-gray-100 transition-colors">
+                    <button className="px-6 py-3 border border-border text-text font-bold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                       {t("declineBtn")}
                     </button>
                   </div>
