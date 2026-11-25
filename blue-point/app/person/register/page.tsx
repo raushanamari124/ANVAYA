@@ -24,10 +24,10 @@ export default function RegisterPerson() {
     // Root wrapper
     <div className="flex flex-col min-h-screen bg-bg">
       
-      {/* 1. FORM SECTION (Yahan background image absolute hai, isliye sirf is part mein rahegi) */}
+      {/* 1. FORM SECTION */}
       <div className="relative flex-grow flex items-center justify-center py-12 px-4 pt-28 md:pt-32">
         
-        {/* Background Image - Absolute taaki sirf is section tak hi rahe */}
+        {/* Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <Image 
             src={bgImages[step - 1]} 
@@ -36,20 +36,20 @@ export default function RegisterPerson() {
             className="object-cover object-center transition-all duration-700" 
             priority
           />
-          {/* Halka sa dark overlay taaki form ke text clear dikhein */}
           <div className="absolute inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-sm"></div>
         </div>
 
         {/* Form Card */}
         <div className="relative z-10 w-full max-w-4xl min-h-[600px] flex flex-col bg-white/60 dark:bg-[#0B1120]/70 backdrop-blur-md border border-white/60 dark:border-white/20 rounded-3xl shadow-2xl overflow-hidden">
           
-          {/* Top Bar inside form: Home Button & Progress */}
+          {/* Top Bar inside form */}
           <div className="relative">
             <div className="bg-gray-200/30 dark:bg-gray-800/50 h-2 w-full">
               <div className="bg-primary h-full transition-all duration-300" style={{ width: `${(step / 4) * 100}%` }}></div>
             </div>
-            <Link href="/" className="absolute top-6 left-8 text-sm font-bold text-primary hover:underline flex items-center gap-1">
-              ← Back to Home
+            {/* Path updated to person portal */}
+            <Link href="/person" className="absolute top-6 left-8 text-sm font-bold text-primary hover:underline flex items-center gap-1">
+              ← Back to Portal
             </Link>
           </div>
 
@@ -188,8 +188,8 @@ export default function RegisterPerson() {
                 <button 
                   onClick={() => {
                     alert("Registration Successful! Redirecting to Dashboard...");
-                    // Naye folder structure ke hisaab se link update kiya gaya hai
-                    router.push("/dashboards/parent_dashboard"); 
+                    // Path updated to person dashboard
+                    router.push("/person/dashboard"); 
                   }} 
                   className="px-10 py-4 rounded-xl font-bold bg-success text-white hover:bg-success/90 shadow-xl transition-colors text-lg"
                 >
