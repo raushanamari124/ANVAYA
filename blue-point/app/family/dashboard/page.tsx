@@ -12,8 +12,8 @@ export default function FamilyDashboard() {
   return (
     <div className="relative flex flex-col min-h-screen bg-bg">
       
-      {/* BACKGROUND IMAGE - Home page wali image */}
-      <div className="absolute inset-0 z-0">
+      {/* BACKGROUND IMAGE - Fixed for smooth scrolling */}
+      <div className="fixed inset-0 z-0">
         <Image 
           src="/hero-bg.png" 
           alt="Background" 
@@ -21,7 +21,7 @@ export default function FamilyDashboard() {
           className="object-cover object-center" 
           priority
         />
-        {/* DARK OVERLAY HATAKAR LIGHT OVERLAY KAR DIYA HAI */}
+        {/* Light/Dark Overlay */}
         <div className="absolute inset-0 bg-white/70 dark:bg-black/70 backdrop-blur-[2px]"></div>
       </div>
 
