@@ -8,21 +8,19 @@ import Footer from "@/components/Footer";
 export default function RegisterFamily() {
   const router = useRouter();
   const [step, setStep] = useState(1);
-  const [isSuccess, setIsSuccess] = useState(false); // Naya state success ke liye
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleNext = () => setStep((prev) => Math.min(prev + 1, 2));
   const handlePrev = () => setStep((prev) => Math.max(prev - 1, 1));
 
-  // Ye function complete registration par chalega
   const handleComplete = () => {
     setIsSuccess(true);
-    // 1.5 second baad automatically dashboard par bhej dega
     setTimeout(() => {
-      router.push("/dashboards/family_dashboard");
+      // Path updated to new family folder structure
+      router.push("/family/dashboard");
     }, 1500);
   };
 
-  // Agar success hai, toh ye screen dikhegi
   if (isSuccess) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-bg">
@@ -65,8 +63,9 @@ export default function RegisterFamily() {
                   Step {step} of 2: {step === 1 ? "Basic Details & Location" : "Link with Senior"}
                 </p>
               </div>
-              <Link href="/" className="text-sm font-bold text-primary hover:underline">
-                ← Back to Home
+              {/* Path updated to family portal */}
+              <Link href="/family" className="text-sm font-bold text-green-600 hover:underline">
+                ← Back to Portal
               </Link>
             </div>
 
@@ -140,7 +139,6 @@ export default function RegisterFamily() {
               {step < 2 ? (
                 <button onClick={handleNext} className="px-8 py-3 rounded-xl font-bold bg-success text-white hover:bg-success/90 shadow-lg transition-colors">Next Step →</button>
               ) : (
-                // Yahan onClick mein handleComplete function call kiya gaya hai
                 <button 
                   onClick={handleComplete} 
                   className="px-8 py-3 rounded-xl font-bold bg-primary text-white hover:bg-primary-hover shadow-lg transition-colors"
