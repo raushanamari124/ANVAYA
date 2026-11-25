@@ -3,7 +3,8 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/Footer";
-import UnderConstruction from "@/components/UnderConstruction"; // <-- Import kiya
+import UnderConstruction from "@/components/UnderConstruction";
+import Testimonials from "@/components/Testimonials"; // Naya Testimonial import kiya
 
 export default function Home() {
   const t = useTranslations("home");
@@ -34,7 +35,7 @@ export default function Home() {
     { step: t("step4Title"), desc: t("step4Desc"), icon: "🏁" },
   ];
 
-  // Updated Portals with Descriptions and Colored Icons
+  // Portals with Descriptions and Colored Icons
   const portals = [
     { id: "person", label: t("parents"), desc: t("parentsDesc"), icon: "👴", href: "/register-person", color: "hover:border-blue-500 hover:bg-blue-500/5", iconBg: "bg-blue-500/10 text-blue-500" }, 
     { id: "family", label: t("family"), desc: t("familyDesc"), icon: "👨‍👩‍👧", href: "/register-family", color: "hover:border-green-500 hover:bg-green-500/5", iconBg: "bg-green-500/10 text-green-500" },
@@ -84,7 +85,6 @@ export default function Home() {
             <Link href="#features" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-primary text-white font-bold text-lg rounded-xl hover:bg-primary-hover shadow-lg transition-all transform hover:-translate-y-1">
               {t("btnPrimary")}
             </Link>
-            {/* Link to scroll to roles */}
             <Link href="#roles" className="w-full sm:w-auto px-8 h-[56px] flex items-center justify-center bg-black/40 backdrop-blur-md border-2 border-white/50 text-white font-bold text-lg rounded-xl hover:bg-black/60 transition-all shadow-lg">
               {t("btnSecondary")}
             </Link>
@@ -175,10 +175,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. UNDER CONSTRUCTION POP-UP */}
+      {/* 5. TESTIMONIALS / FEEDBACK SLIDER (Footer se theek pehle) */}
+      <Testimonials />
+
+      {/* 6. UNDER CONSTRUCTION POP-UP */}
       <UnderConstruction />
 
-      {/* 6. FOOTER */}
+      {/* 7. FOOTER */}
       <Footer />
       
     </div>
