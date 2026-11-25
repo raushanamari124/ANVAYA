@@ -13,15 +13,16 @@ export default function RegisterHelper() {
   const handleNext = () => setStep((prev) => Math.min(prev + 1, 2));
   const handlePrev = () => setStep((prev) => Math.max(prev - 1, 1));
 
-    const handleComplete = () => {
+  const handleComplete = () => {
     setIsSuccess(true);
     // 2.5 second baad automatically dashboard par bhej dega
     setTimeout(() => {
-      router.push("/dashboards/helper_dashboard"); 
+      // Path updated to new helper structure
+      router.push("/helper/dashboard"); 
     }, 2500);
   };
 
-    if (isSuccess) {
+  if (isSuccess) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-bg">
         <div className="text-center bg-card p-12 rounded-3xl shadow-xl border border-border max-w-lg mx-auto">
@@ -34,14 +35,15 @@ export default function RegisterHelper() {
             (For Demo purposes, you can click below to view the Helper Dashboard)
           </p>
           
-          {/* Naya Button Dashboard par jane ke liye */}
-          <Link href="/dashboards/helper_dashboard" className="px-8 py-4 bg-orange-500 text-white font-bold rounded-xl hover:bg-orange-600 transition-colors shadow-lg">
+          {/* Button Dashboard par jane ke liye - Path Updated */}
+          <Link href="/helper/dashboard" className="px-8 py-4 bg-orange-500 text-white font-bold rounded-xl hover:bg-orange-600 transition-colors shadow-lg">
             Go to Helper Dashboard →
           </Link>
         </div>
       </div>
     );
   }
+  
   return (
     <div className="flex flex-col min-h-screen bg-bg">
       
@@ -72,8 +74,9 @@ export default function RegisterHelper() {
                   Step {step} of 2: {step === 1 ? "Basic Details" : "Services & Verification"}
                 </p>
               </div>
-              <Link href="/" className="text-sm font-bold text-primary hover:underline">
-                ← Back to Home
+              {/* Link updated to helper portal */}
+              <Link href="/helper" className="text-sm font-bold text-orange-600 hover:underline">
+                ← Back to Portal
               </Link>
             </div>
 
