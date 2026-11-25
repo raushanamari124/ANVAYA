@@ -14,11 +14,24 @@ export default function DoctorDashboard() {
   ]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-bg">
-      <div className="max-w-[1400px] mx-auto w-full px-4 py-8 space-y-6 flex-grow mt-16">
+    <div className="relative flex flex-col min-h-screen bg-bg">
+      
+      {/* BACKGROUND IMAGE - Full Visibility with Glass Overlay */}
+      <div className="fixed inset-0 z-0">
+        <Image 
+          src="/hero-bg.png" 
+          alt="Background" 
+          fill 
+          className="object-cover object-center" 
+          priority
+        />
+        <div className="absolute inset-0 bg-white/70 dark:bg-black/75 backdrop-blur-[2px]"></div>
+      </div>
+
+      <div className="relative z-10 max-w-[1400px] mx-auto w-full px-4 py-8 space-y-6 flex-grow mt-16">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-card border border-border p-6 rounded-3xl shadow-sm">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white/80 dark:bg-[#0B1120]/80 backdrop-blur-md border border-white/40 dark:border-white/10 p-6 rounded-3xl shadow-lg">
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 text-purple-600 rounded-full flex items-center justify-center text-3xl shadow-inner">
               🩺
@@ -32,7 +45,7 @@ export default function DoctorDashboard() {
             <button className="px-6 h-12 bg-purple-600 text-white font-bold rounded-xl shadow-md hover:bg-purple-700 transition-colors flex items-center gap-2">
               📅 View Schedule
             </button>
-            <Link href="/" className="px-6 h-12 bg-card border border-border text-text font-bold rounded-xl shadow-sm hover:bg-gray-50 transition-colors flex items-center gap-2">
+            <Link href="/" className="px-6 h-12 bg-white dark:bg-gray-800 border border-border text-text font-bold rounded-xl shadow-sm hover:bg-gray-50 transition-colors flex items-center gap-2">
               🏠 Home
             </Link>
           </div>
@@ -40,15 +53,15 @@ export default function DoctorDashboard() {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-card border border-border rounded-3xl p-6 shadow-sm">
+          <div className="bg-white/80 dark:bg-[#0B1120]/80 backdrop-blur-md border border-white/40 dark:border-white/10 rounded-3xl p-6 shadow-lg">
             <p className="text-text/60 font-medium mb-1">Total Patients</p>
             <h3 className="text-4xl font-extrabold text-text">124</h3>
           </div>
-          <div className="bg-card border border-border rounded-3xl p-6 shadow-sm">
+          <div className="bg-white/80 dark:bg-[#0B1120]/80 backdrop-blur-md border border-white/40 dark:border-white/10 rounded-3xl p-6 shadow-lg">
             <p className="text-text/60 font-medium mb-1">Appointments Today</p>
             <h3 className="text-4xl font-extrabold text-purple-600">8</h3>
           </div>
-          <div className="bg-card border border-border rounded-3xl p-6 shadow-sm">
+          <div className="bg-white/80 dark:bg-[#0B1120]/80 backdrop-blur-md border border-white/40 dark:border-white/10 rounded-3xl p-6 shadow-lg">
             <p className="text-text/60 font-medium mb-1">Pending Reviews</p>
             <h3 className="text-4xl font-extrabold text-sos">3</h3>
           </div>
@@ -57,8 +70,8 @@ export default function DoctorDashboard() {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
-          {/* Patients List (Takes 2 columns) */}
-          <div className="lg:col-span-2 bg-card border border-border rounded-3xl p-6 shadow-sm">
+          {/* Patients List */}
+          <div className="lg:col-span-2 bg-white/90 dark:bg-[#0B1120]/90 backdrop-blur-xl border border-white/50 dark:border-white/10 rounded-3xl p-6 shadow-xl">
             <h3 className="text-2xl font-bold text-text mb-6 flex items-center gap-3">
               👥 My Patients (Recent)
             </h3>
@@ -103,7 +116,7 @@ export default function DoctorDashboard() {
               </table>
             </div>
             
-            <button className="w-full mt-6 py-3 border-2 border-dashed border-purple-300 text-purple-600 font-bold rounded-xl hover:bg-purple-50 transition-colors">
+            <button className="w-full mt-6 py-3 border-2 border-dashed border-purple-300 text-purple-600 font-bold rounded-xl hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors">
               View All Patients
             </button>
           </div>
@@ -112,7 +125,7 @@ export default function DoctorDashboard() {
           <div className="lg:col-span-1 space-y-6">
             
             {/* Today's Schedule */}
-            <div className="bg-card border border-border rounded-3xl p-6 shadow-sm">
+            <div className="bg-white/90 dark:bg-[#0B1120]/90 backdrop-blur-xl border border-white/50 dark:border-white/10 rounded-3xl p-6 shadow-xl">
               <h3 className="text-xl font-bold text-text mb-4 flex items-center gap-2">
                 ⏰ Today's Schedule
               </h3>
@@ -135,7 +148,7 @@ export default function DoctorDashboard() {
             </div>
 
             {/* Pending Verifications Alert */}
-            <div className="bg-sos/10 border border-sos/20 rounded-3xl p-6 shadow-sm">
+            <div className="bg-sos/10 border border-sos/20 rounded-3xl p-6 shadow-lg backdrop-blur-sm">
               <h3 className="text-xl font-bold text-sos mb-2 flex items-center gap-2">
                 ⚠️ Action Required
               </h3>
