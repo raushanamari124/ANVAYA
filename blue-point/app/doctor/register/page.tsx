@@ -13,11 +13,11 @@ export default function RegisterDoctor() {
   const handleNext = () => setStep((prev) => Math.min(prev + 1, 2));
   const handlePrev = () => setStep((prev) => Math.max(prev - 1, 1));
 
-    const handleComplete = () => {
+  const handleComplete = () => {
     setIsSuccess(true);
     setTimeout(() => {
-      // Pehle yahan router.push("/") tha, usko update karein:
-      router.push("/dashboards/doctor_dashboard"); 
+      // Path updated to new structure
+      router.push("/doctor/dashboard"); 
     }, 2000);
   };
 
@@ -25,7 +25,7 @@ export default function RegisterDoctor() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-bg">
         <div className="text-center bg-card p-12 rounded-3xl shadow-xl border border-border">
-          <div className="w-20 h-20 bg-primary/20 text-primary rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+          <div className="w-20 h-20 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
             🩺
           </div>
           <h1 className="text-3xl font-extrabold text-text mb-2">Application Submitted!</h1>
@@ -65,8 +65,8 @@ export default function RegisterDoctor() {
                   Step {step} of 2: {step === 1 ? "Professional Identity" : "Clinic & Verification"}
                 </p>
               </div>
-              <Link href="/" className="text-sm font-bold text-primary hover:underline">
-                ← Back to Home
+              <Link href="/doctor" className="text-sm font-bold text-purple-600 hover:underline">
+                ← Back to Portal
               </Link>
             </div>
 
