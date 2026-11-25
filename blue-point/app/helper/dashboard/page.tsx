@@ -16,10 +16,11 @@ export default function HelperDashboard() {
     setRequests(requests.map(req => req.id === id ? { ...req, status: "accepted" } : req));
   };
 
+  // Verification Pending View
   if (!isVerified) {
     return (
       <div className="relative min-h-screen flex flex-col bg-bg">
-        <div className="absolute inset-0 z-0">
+        <div className="fixed inset-0 z-0">
           <Image src="/hero-bg.png" alt="Background" fill className="object-cover object-center" />
           <div className="absolute inset-0 bg-white/70 dark:bg-[#0B1120]/80 backdrop-blur-sm"></div>
         </div>
@@ -40,11 +41,12 @@ export default function HelperDashboard() {
     );
   }
 
+  // Verified Helper Dashboard View
   return (
     <div className="relative flex flex-col min-h-screen bg-bg">
       
-      {/* BACKGROUND IMAGE - Full Visibility with Glass Overlay */}
-      <div className="absolute inset-0 z-0 fixed">
+      {/* BACKGROUND IMAGE */}
+      <div className="fixed inset-0 z-0">
         <Image 
           src="/hero-bg.png" 
           alt="Background" 
