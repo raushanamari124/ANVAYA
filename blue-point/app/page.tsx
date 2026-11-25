@@ -35,12 +35,12 @@ export default function Home() {
     { step: t("step4Title"), desc: t("step4Desc"), icon: "🏁" },
   ];
 
-  // Portals with Descriptions and Colored Icons
+    // Portals with Descriptions and Colored Icons
   const portals = [
-    { id: "person", label: t("parents"), desc: t("parentsDesc"), icon: "👴", href: "/register-person", color: "hover:border-blue-500 hover:bg-blue-500/5", iconBg: "bg-blue-500/10 text-blue-500" }, 
-    { id: "family", label: t("family"), desc: t("familyDesc"), icon: "👨‍👩‍👧", href: "/register-family", color: "hover:border-green-500 hover:bg-green-500/5", iconBg: "bg-green-500/10 text-green-500" },
-    { id: "doctor", label: t("doctor"), desc: t("doctorDesc"), icon: "🩺", href: "/register-doctor", color: "hover:border-purple-500 hover:bg-purple-500/5", iconBg: "bg-purple-500/10 text-purple-500" },
-    { id: "helper", label: t("ngo"), desc: t("ngoDesc"), icon: "🤝", href: "/register-helper", color: "hover:border-orange-500 hover:bg-orange-500/5", iconBg: "bg-orange-500/10 text-orange-500" },
+    { id: "person", label: t("parents"), desc: t("parentsDesc"), icon: "👴", href: "/person", color: "hover:border-blue-500 hover:bg-blue-500/5", iconBg: "bg-blue-500/10 text-blue-500" }, 
+    { id: "family", label: t("family"), desc: t("familyDesc"), icon: "👨‍👩‍👧", href: "/family", color: "hover:border-green-500 hover:bg-green-500/5", iconBg: "bg-green-500/10 text-green-500" },
+    { id: "doctor", label: t("doctor"), desc: t("doctorDesc"), icon: "🩺", href: "/doctor", color: "hover:border-purple-500 hover:bg-purple-500/5", iconBg: "bg-purple-500/10 text-purple-500" },
+    { id: "helper", label: t("ngo"), desc: t("ngoDesc"), icon: "🤝", href: "/helper", color: "hover:border-orange-500 hover:bg-orange-500/5", iconBg: "bg-orange-500/10 text-orange-500" },
   ];
 
   return (
