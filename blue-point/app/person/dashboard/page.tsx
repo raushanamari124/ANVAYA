@@ -55,10 +55,9 @@ export default function ParentDashboard() {
         <div>
           <h2 className="text-3xl font-bold text-text mb-5">{t("upcoming")}</h2>
           
-          {/* Grid updated to 4 columns on large screens */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            {/* Medicine Card (Bed Image) */}
+            {/* Medicine Card */}
             <div className="relative h-[300px] rounded-3xl overflow-hidden group shadow-lg border border-border">
               <Image src="/medicine-bg.png" alt="Medicine" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
@@ -73,7 +72,7 @@ export default function ParentDashboard() {
               </div>
             </div>
 
-            {/* Meal Card (Food Image) */}
+            {/* Meal Card */}
             <div className="relative h-[300px] rounded-3xl overflow-hidden group shadow-lg border border-border">
               <Image src="/meal-bg.png" alt="Meal" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
@@ -85,7 +84,7 @@ export default function ParentDashboard() {
               </div>
             </div>
 
-            {/* Video Call Card (Sofa Image) */}
+            {/* Video Call Card */}
             <div className="relative h-[300px] rounded-3xl overflow-hidden group shadow-lg border border-border">
               <Image src="/video-call-bg.png" alt="Video Call" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/90 via-black/40 to-transparent"></div>
@@ -99,7 +98,7 @@ export default function ParentDashboard() {
               </div>
             </div>
 
-            {/* NEW: Doctor Appointment Card (Helper Image) */}
+            {/* Doctor Appointment Card */}
             <div className="relative h-[300px] rounded-3xl overflow-hidden group shadow-lg border border-border">
               <Image src="/helper-care.png" alt="Doctor Appointment" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-purple-900/90 via-black/40 to-transparent"></div>
@@ -117,12 +116,12 @@ export default function ParentDashboard() {
           </div>
         </div>
 
-        {/* 4. Order Services (Grocery/Medicine) */}
+        {/* 4. Order Services */}
         <div>
           <h2 className="text-3xl font-bold text-text mb-5">{t("orderServices")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
-            {/* Grocery Card (Helper Image) */}
+            {/* Grocery Card */}
             <div className="relative h-[240px] rounded-3xl overflow-hidden border border-border shadow-sm group cursor-pointer">
               <Image src="/helper-care.png" alt="Grocery" fill className="object-cover object-top group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-900/60 to-transparent w-full md:w-4/5"></div>
@@ -134,7 +133,7 @@ export default function ParentDashboard() {
               </div>
             </div>
 
-            {/* Medicine Delivery Card (Helper Image) */}
+            {/* Medicine Delivery Card */}
             <div className="relative h-[240px] rounded-3xl overflow-hidden border border-border shadow-sm group cursor-pointer">
               <Image src="/helper-care.png" alt="Medicine Delivery" fill className="object-cover object-top group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-r from-teal-900/90 via-teal-900/60 to-transparent w-full md:w-4/5"></div>
@@ -151,7 +150,6 @@ export default function ParentDashboard() {
 
       </div>
 
-      {/* Footer */}
       <div className="relative z-10 w-full mt-auto bg-[#020617]">
         <Footer />
       </div>
