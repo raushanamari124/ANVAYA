@@ -76,10 +76,12 @@ export default function TopBar() {
               <div className="pt-4 pb-2">
                 <p className="px-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Main Portals</p>
               </div>
-              <Link href="/register-person" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-xl hover:bg-gray-50 text-base font-medium text-gray-700 transition-colors">👴 Parents / Person</Link>
-              <Link href="/register-family" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-xl hover:bg-gray-50 text-base font-medium text-gray-700 transition-colors">👨‍👩‍👧 Family Member</Link>
-              <Link href="/register-doctor" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-xl hover:bg-gray-50 text-base font-medium text-gray-700 transition-colors">🩺 Doctor Portal</Link>
-              <Link href="/register-helper" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-xl hover:bg-gray-50 text-base font-medium text-gray-700 transition-colors">🤝 NGO / Helper</Link>
+              
+              {/* PATHS UPDATED HERE TO NEW STRUCTURE */}
+              <Link href="/person" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-xl hover:bg-gray-50 text-base font-medium text-gray-700 transition-colors">👴 Parents / Person</Link>
+              <Link href="/family" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-xl hover:bg-gray-50 text-base font-medium text-gray-700 transition-colors">👨‍👩‍👧 Family Member</Link>
+              <Link href="/doctor" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-xl hover:bg-gray-50 text-base font-medium text-gray-700 transition-colors">🩺 Doctor Portal</Link>
+              <Link href="/helper" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-xl hover:bg-gray-50 text-base font-medium text-gray-700 transition-colors">🤝 NGO / Helper</Link>
 
               <div className="pt-4 pb-2">
                 <p className="px-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Information</p>
